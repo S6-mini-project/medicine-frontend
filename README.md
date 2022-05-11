@@ -1,1 +1,1 @@
-medicine app frontend repository
+medicine app frontend repo
