@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './usernameWidget.dart';
 import './passWidget.dart';
 import './loginImgWidget.dart';
+
 class LoginWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class LoginWidget extends StatelessWidget {
           child: PassWidget(),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * .04,
+          height: MediaQuery.of(context).size.height * .03,
         ),
         SizedBox(
             height: MediaQuery.of(context).size.height * .1,
@@ -40,27 +41,53 @@ class LoginWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width:  MediaQuery.of(context).size.width * .21,
+                  width: MediaQuery.of(context).size.width * .21,
                 ),
-                  FlatButton(
-              onPressed: () {
-                print("hii");
-              },
-              onLongPress: () {
-                print("long press");
-              },
-              child:  Icon(Icons.keyboard_arrow_right_rounded),
-              textColor: Colors.white,
-              color: Color.fromARGB(182, 27, 26, 26),
-              splashColor: Color.fromARGB(208, 0, 0, 0),
-              highlightColor: Colors.black38,
-              disabledTextColor: Colors.blueGrey,
-              shape: CircleBorder(),
-              padding: EdgeInsets.all(15),
-            ),
+                FlatButton(
+                  onPressed: () {
+                    print("hii");
+                  },
+                  onLongPress: () {
+                    print("long press");
+                  },
+                  child: Icon(Icons.keyboard_arrow_right_rounded),
+                  textColor: Colors.white,
+                  color: Color.fromARGB(182, 27, 26, 26),
+                  splashColor: Color.fromARGB(208, 0, 0, 0),
+                  highlightColor: Colors.black38,
+                  disabledTextColor: Colors.blueGrey,
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(15),
+                ),
               ],
-              
-            ))
+            )),
+            SizedBox(
+            height: MediaQuery.of(context).size.height * .03
+          ) ,
+        SizedBox(
+          child: Column(
+            children: [
+              Text(
+            "Dont have an account?",
+            style: TextStyle(
+              fontFamily: "poppins",
+              color: Color.fromARGB(182, 27, 26, 26),
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+           Text(
+            "Sign up",
+            style: TextStyle(
+              fontFamily: "poppins",
+              color: Color.fromARGB(182, 27, 26, 26),
+              fontWeight: FontWeight.w600,
+              decoration: TextDecoration.underline,
+            ),
+          ),
+            ],
+            
+          ) 
+        )
       ],
     );
   }
