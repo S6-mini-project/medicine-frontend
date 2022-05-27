@@ -6,7 +6,9 @@ import './widgets/loginWidget.dart';
      return MaterialApp(
        home:Scaffold(
          body: LoginWidget(),
+         backgroundColor: Color.fromARGB(255, 228, 222, 222),
        )
      );
    }
  }
+  

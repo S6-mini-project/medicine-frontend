@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class PassWidget extends StatelessWidget{
+class PassWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  TextField(
+    return TextField(
       keyboardType: TextInputType.multiline,
       onChanged: (String value) {
         print(value);
@@ -12,10 +12,11 @@ class PassWidget extends StatelessWidget{
         print("tapped");
       },
       decoration: InputDecoration(
-       
+        enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Color.fromARGB(112, 146, 146, 146))),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.black,
+            color:  Color.fromARGB(185, 200, 196, 196),
             width: 2,
           ),
           // borderRadius: BorderRadius.only(
@@ -26,11 +27,9 @@ class PassWidget extends StatelessWidget{
         hintText: "Password",
         hintStyle: TextStyle(
           fontFamily: "Poppins",
-          color: Color.fromARGB(255, 124, 121, 121),
+          color: Color.fromARGB(141, 131, 127, 127),
+          fontSize: 18,
         ),
-        labelText: "Password",
-        labelStyle: TextStyle(color: Colors.black, fontFamily: "Poppins"),
-        
       ),
     );
   }
