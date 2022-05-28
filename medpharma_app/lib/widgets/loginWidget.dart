@@ -75,7 +75,17 @@ class LoginWidget extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-           Text(
+          
+          FlatButton(
+            onPressed: () {
+            print("sign up pressed");
+          },
+          color:  Color.fromARGB(255, 228, 222, 222),
+          splashColor:  Color.fromARGB(208, 0, 0, 0),
+           highlightColor: Color.fromARGB(96, 108, 105, 105),
+          padding: EdgeInsets.all(10),
+           shape: StadiumBorder(),
+          child:  Text(
             "Sign up",
             style: TextStyle(
               fontFamily: "poppins",
@@ -84,6 +94,7 @@ class LoginWidget extends StatelessWidget {
               decoration: TextDecoration.underline,
             ),
           ),
+          )
             ],
             
           ) 
