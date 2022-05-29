@@ -172,6 +172,31 @@ class App extends StatelessWidget {
             ),
           ],
         )),
+      //         bottomNavigationBar: BottomNavigationBar(  
+      //   items: const <BottomNavigationBarItem>[  
+      //     BottomNavigationBarItem(  
+      //       icon: Icon(Icons.home_outlined),  
+      //       label: "Home",  
+      //       // backgroundColor: Colors.green  
+      //     ),  
+      //     BottomNavigationBarItem(  
+      //       icon: Icon(Icons.notifications_outlined),  
+      //       label: "Notifications",  
+      //       // backgroundColor: Colors.yellow  
+      //     ),  
+      //     BottomNavigationBarItem(  
+      //       icon: Icon(Icons.person_outlined), 
+      //      label: "Profile",
+      //       // backgroundColor: Colors.blue,  
+      //     ),  
+      //   ],  
+      //   type: BottomNavigationBarType.shifting,  
+      //   currentIndex: _selectedIndex,  
+      //   selectedItemColor: Colors.black,  
+      //   iconSize: 40,  
+      //   onTap: _onItemTapped,  
+      //   elevation: 5  
+      // ),  
       ),
     );
   }
