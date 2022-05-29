@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './widgets/orderWidget.dart';
 import './widgets/drawerCardWidget.dart';
+
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -94,7 +95,6 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
           DrawerHeader(
             child: Center(
               child: DrawerCardWidget(),
-              
             ),
             decoration: BoxDecoration(color: Colors.white),
           ),
@@ -116,9 +116,9 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             },
             hoverColor: Colors.black38,
             leading: Icon(
-              Icons.home,
+              Icons.home_filled,
               size: 40,
-              color: Colors.black,
+              color: Colors.indigo,
             ),
             trailing: Icon(Icons.keyboard_arrow_right_rounded),
           ),
@@ -142,7 +142,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             leading: Icon(
               Icons.person,
               size: 40,
-              color: Colors.black,
+              color: Colors.indigo,
             ),
             trailing: Icon(Icons.keyboard_arrow_right_rounded),
           ),
@@ -166,7 +166,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             leading: Icon(
               Icons.stacked_bar_chart,
               size: 40,
-              color: Colors.black,
+              color: Colors.indigo,
             ),
             trailing: Icon(Icons.keyboard_arrow_right_rounded),
           ),
@@ -190,44 +190,41 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             leading: Icon(
               Icons.logout,
               size: 40,
-              color: Colors.black,
+              color: Colors.indigo,
             ),
             trailing: Icon(Icons.keyboard_arrow_right_rounded),
           ),
         ],
       )),
       bottomNavigationBar: BottomNavigationBar(
-       
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: "Home",
-              
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.shopping_bag_outlined,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.shopping_bag_outlined,
-                
-              ),
-              //  backgroundColor: Colors.blue,
-              label: "Orders",
+            //  backgroundColor: Colors.blue,
+            label: "Orders",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person_outlined,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person_outlined,
-                
-              ),
-              label: "Profile",
-              // backgroundColor: Colors.blue,
-            ),
-          ],
-          type: BottomNavigationBarType.shifting,
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.indigo,
-          unselectedItemColor: Colors.black38,
-          iconSize: 32,
-          onTap: _onItemTapped,
-          elevation: 1),
+            label: "Profile",
+            // backgroundColor: Colors.blue,
+          ),
+        ],
+        type: BottomNavigationBarType.shifting,
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.indigo,
+        unselectedItemColor: Colors.black38,
+        iconSize: 32,
+        onTap: _onItemTapped,
+        elevation: 1,
+      ),
     );
   }
 }
