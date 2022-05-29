@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
-import './widgets/orderWidget.dart';
-import './widgets/drawerCardWidget.dart';
-import 'widgets/homeScreen.dart';
-import 'widgets/orderScreen.dart';
-class App extends StatelessWidget {
+import './orderWidget.dart';
+import './homeScreen.dart';
+import './drawerCardWidget.dart';
+class OrderScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-       home: MyNavigationBar(),
-         initialRoute: '/',  
-    // routes: {  
-    //   // When navigating to the "/" route, build the FirstScreen widget.  
-    //   '/': (context) => HomeScreen(),  //routes
-    //   // When navigating to the "/second" route, build the SecondScreen widget.  
-    //   '/orders': (context) => OrderScreen(),  //routes
-    // },  
-    );
+   return  Scaffold(
+      body: OrderWidget(),
+      backgroundColor: Color.fromARGB(255, 249, 249, 249),
+      );
   }
 }
-
-
 
 class MyNavigationBar extends StatefulWidget {
   MyNavigationBar({Key? key}) : super(key: key);
@@ -31,7 +22,7 @@ class MyNavigationBar extends StatefulWidget {
 class _MyNavigationBarState extends State<MyNavigationBar> {
   int _selectedIndex = 0;
   static  List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
+     HomeScreen(),
     OrderScreen(),
     Text('Profile Page',
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
