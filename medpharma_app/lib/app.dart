@@ -48,6 +48,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
     return Scaffold(
        body: _widgetOptions.elementAt(_selectedIndex),
       backgroundColor: Color.fromARGB(255, 249, 249, 249),
+        // backgroundColor: Color.fromARGB(255,241,191,132),
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(70.0),
           child: AppBar(
