@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './widgets/orderWidget.dart';
-
+import './widgets/drawerCardWidget.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -93,16 +93,8 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
         children: [
           DrawerHeader(
             child: Center(
-              child: Center(
-                child: Text(
-                  "Hii user",
-                  style: TextStyle(
-                    fontFamily: "poppins",
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              child: DrawerCardWidget(),
+              
             ),
             decoration: BoxDecoration(color: Colors.white),
           ),
