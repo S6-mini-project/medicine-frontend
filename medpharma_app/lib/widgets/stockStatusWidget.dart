@@ -11,8 +11,8 @@ class StockStatusWidget extends StatelessWidget {
          decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             gradient: const LinearGradient(colors: [
-              Color.fromARGB(255,45, 86, 118),
-              Color.fromARGB(255,73, 70, 118),
+              Color.fromARGB(255,175, 182, 187),
+              Color.fromARGB(255,91, 105, 119),
             ])),
         child: Padding(
           padding: const EdgeInsets.all(13.0),
@@ -40,7 +40,7 @@ class StockStatusWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: CircularPercentIndicator(
-                    progressColor: Colors.cyan,
+                    progressColor: Colors.orangeAccent,
                     radius: 60.0,
                     lineWidth: 13.0,
                     animation: true,

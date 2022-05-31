@@ -135,8 +135,10 @@ class PromoCard extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             gradient: const LinearGradient(colors: [
-              Color.fromARGB(255, 78, 99, 136),
-              Color.fromARGB(255, 15, 32, 128)
+              // Color.fromARGB(255, 78, 99, 136),
+              // Color.fromARGB(255, 15, 32, 128)
+                 Color.fromARGB(255,3, 11, 50),
+              Color.fromARGB(255, 3, 65, 128)
             ])),
         child: Stack(
           children: [

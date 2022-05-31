@@ -34,7 +34,7 @@ class OrderCardWidgetState extends State {
            shape: RoundedRectangleBorder(  
             borderRadius: BorderRadius.circular(15.0),  
           ),  
-          color: Color.fromARGB(255, 244, 244, 244),  
+          color: Color.fromARGB(255, 236, 249, 249),  
           elevation: 1,  
           child: Padding(
             padding: const EdgeInsets.all(13.0),
