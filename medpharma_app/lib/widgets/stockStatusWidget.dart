@@ -7,13 +7,13 @@ class StockStatusWidget extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height * .18,
       width: MediaQuery.of(context).size.width,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        // color: Color.fromARGB(255, 224, 248, 246),
-        color: Colors.indigo,
-        elevation: 1,
+      margin: EdgeInsets.all(7),
+         decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            gradient: const LinearGradient(colors: [
+              Color.fromARGB(255,45, 86, 118),
+              Color.fromARGB(255,73, 70, 118),
+            ])),
         child: Padding(
           padding: const EdgeInsets.all(13.0),
           child: Row(
@@ -36,25 +36,29 @@ class StockStatusWidget extends StatelessWidget {
               SizedBox(
                 width: 90,
               ),
-              CircularPercentIndicator(
-                progressColor: Colors.lightGreenAccent,
-                radius: 60.0,
-                lineWidth: 13.0,
-                animation: true,
-                percent: 0.5,
-                center: new Text(
-                  "50.0%",
-                  style: new TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                    color: Colors.white,
+             
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: CircularPercentIndicator(
+                    progressColor: Colors.cyan,
+                    radius: 60.0,
+                    lineWidth: 13.0,
+                    animation: true,
+                    percent: 0.5,
+                    center: new Text(
+                      "50.0%",
+                      style: new TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
-              ),
             ],
+              ),
           ),
-        ),
-      ),
-    );
+      
+      );
   }
 }

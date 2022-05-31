@@ -3,6 +3,7 @@ import './widgets/orderWidget.dart';
 import './widgets/drawerCardWidget.dart';
 import 'widgets/homeScreen.dart';
 import 'widgets/orderScreen.dart';
+import './widgets/profileScreen.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -33,8 +34,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
   static  List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     OrderScreen(),
-    Text('Profile Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
