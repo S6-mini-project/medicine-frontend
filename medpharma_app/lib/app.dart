@@ -4,18 +4,22 @@ import './widgets/drawerCardWidget.dart';
 import 'widgets/homeScreen.dart';
 import 'widgets/orderScreen.dart';
 import './widgets/profileScreen.dart';
+import './widgets/loginWidget.dart'; 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
        home: MyNavigationBar(),
-         initialRoute: '/',  
-    // routes: {  
+         initialRoute: '/login',  
+    routes: {  
     //   // When navigating to the "/" route, build the FirstScreen widget.  
-    //   '/': (context) => HomeScreen(),  //routes
+      '/login': (context) => LoginWidget(),
+      '/home': (context) => MyNavigationBar(), 
+      '/users': (context) => MyNavigationBar(),
+      '/orders': (context) => MyNavigationBar()//routes
     //   // When navigating to the "/second" route, build the SecondScreen widget.  
     //   '/orders': (context) => OrderScreen(),  //routes
-    // },  
+     },  
     );
   }
 }
@@ -121,6 +125,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             ),
             onTap: () {
               print("home pressed");
+                Navigator.pushNamed(context, '/home');  
             },
             hoverColor: Colors.black38,
             leading: Icon(
@@ -145,6 +150,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             ),
             onTap: () {
               print("User pressed");
+                Navigator.pushNamed(context, '/users');  
             },
             hoverColor: Colors.black38,
             leading: Icon(
@@ -156,23 +162,24 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
           ),
           ListTile(
             title: Text(
-              "stocks",
+              "Orders",
               style: TextStyle(
                 fontFamily: "poppins",
               ),
             ),
             subtitle: Text(
-              "display medicine stocks",
+              "display medicine orders",
               style: TextStyle(
                 fontFamily: "poppins",
               ),
             ),
             onTap: () {
               print("stocks pressed");
+                Navigator.pushNamed(context, '/orders');  
             },
             hoverColor: Colors.black38,
             leading: Icon(
-              Icons.stacked_bar_chart,
+              Icons.shopify_sharp,
               size: 40,
               color: Colors.indigo,
             ),
@@ -191,12 +198,12 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                 fontFamily: "poppins",
               ),
             ),
-            onTap: () {
-              print("Logout pressed");
+            onTap: () { 
+                Navigator.pushNamed(context, '/login');  
             },
             hoverColor: Colors.black38,
             leading: Icon(
-              Icons.logout,
+              Icons.power_settings_new_rounded,
               size: 40,
               color: Colors.indigo,
             ),
@@ -236,3 +243,16 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
     );
   }
 }
+
+//  class App extends StatelessWidget{
+//     @override
+//    Widget build(BuildContext context) {
+//      return MaterialApp(
+//        home:Scaffold(
+//          body: LoginWidget(),
+//          backgroundColor: Color.fromARGB(255, 228, 222, 222),
+//        )
+//      );
+//    }
+//  }
+  
