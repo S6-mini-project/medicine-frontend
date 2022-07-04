@@ -5,6 +5,7 @@ import 'widgets/homeScreen.dart';
 import 'widgets/orderScreen.dart';
 import './widgets/profileScreen.dart';
 import './widgets/loginWidget.dart'; 
+import './widgets/notificationScreen.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class App extends StatelessWidget {
       '/login': (context) => LoginWidget(),
       '/home': (context) => MyNavigationBar(), 
       '/users': (context) => MyNavigationBar(),
+      '/notifications': (context) => NotificationScreen(),
       '/orders': (context) => MyNavigationBar()//routes
     //   // When navigating to the "/second" route, build the SecondScreen widget.  
     //   '/orders': (context) => OrderScreen(),  //routes
@@ -74,6 +76,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
               IconButton(
                 onPressed: () {
                   print("icon button pressed");
+                  Navigator.pushNamed(context, '/notifications');
                 },
                 icon: Icon(
                   Icons.notifications_outlined,
