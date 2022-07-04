@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pie_chart/pie_chart.dart';
+
 
 class ProfileWidget extends StatelessWidget {
   /// the base color of the images background and its concentric circles.
@@ -225,3 +227,6 @@ class Headline extends StatelessWidget {
   }
 }
 
+
+
+// pie chart

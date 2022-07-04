@@ -22,10 +22,10 @@ class HomeScreen extends StatelessWidget {
           SHeadline(),
         
           StockStatusWidget(),
-          StockStatusWidget(),
-          StockStatusWidget(),
-          StockStatusWidget(),
-          StockStatusWidget()
+          // StockStatusWidget(),
+          // StockStatusWidget(),
+          // StockStatusWidget(),
+          // StockStatusWidget()
         ],
       ),
     ));
