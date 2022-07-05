@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './orderCardWidget.dart';
 import './notificationWidget.dart';
+import 'package:medpharma_app/api/medweight.dart';
 
 class OrderWidget extends StatefulWidget {
   @override
@@ -8,8 +9,9 @@ class OrderWidget extends StatefulWidget {
 }
 
 class OrderWidgetState extends State {
+  Medweight weight = Medweight();
   bool viewVisible = true;
-
+  int? wt;
   void showWidget() {
     setState(() {
       viewVisible = true;
@@ -28,7 +30,6 @@ class OrderWidgetState extends State {
       padding: EdgeInsets.all(10),
       child: ListView(
         children: [
-          
           SizedBox(
             height: 60,
             child: Row(
@@ -76,55 +77,44 @@ class OrderWidgetState extends State {
           SizedBox(
             height: 20,
           ),
-          Visibility(
-            maintainSize: true,
-            maintainAnimation: true,
-            maintainState: true,
-            visible: viewVisible,
-            child: OrderCardWidget(),
-          ),
-          Visibility(
-            maintainSize: true,
-            maintainAnimation: true,
-            maintainState: true,
-            visible: viewVisible,
-            child: OrderCardWidget(),
-          ),
-          Visibility(
-            maintainSize: true,
-            maintainAnimation: true,
-            maintainState: true,
-            visible: viewVisible,
-            child: OrderCardWidget(),
-          ),
-          Visibility(
-            maintainSize: true,
-            maintainAnimation: true,
-            maintainState: true,
-            visible: viewVisible,
-            child: OrderCardWidget(),
-          ),
-          Visibility(
-            maintainSize: true,
-            maintainAnimation: true,
-            maintainState: true,
-            visible: viewVisible,
-            child: OrderCardWidget(),
-          ),
-          Visibility(
-            maintainSize: true,
-            maintainAnimation: true,
-            maintainState: true,
-            visible: viewVisible,
-            child: OrderCardWidget(),
-          ),
-          Visibility(
-            maintainSize: true,
-            maintainAnimation: true,
-            maintainState: true,
-            visible: viewVisible,
-            child: OrderCardWidget(),
-          ),
+          FutureBuilder<List>(
+              future: weight.getMedWeight(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemCount: snapshot.data?.length,
+                      itemBuilder: (context, i) {
+                        wt = int.parse(snapshot.data![i]['medicine_weight']);
+                        if (wt! <= 30) {
+                          return SizedBox(
+                            child: Visibility(
+                              maintainSize: true,
+                              maintainAnimation: true,
+                              maintainState: true,
+                              visible: viewVisible,
+                              child: OrderCardWidget(),
+                            ),
+                          );
+                        } else {
+                          return Text(
+                            "No Orders for now come back later",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "poppins",
+                              fontSize: 32,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          );
+                        }
+                      });
+                } else {
+                  return const Center(
+                    child: Text("No data available"),
+                  );
+                }
+              }),
         ],
       ),
     );

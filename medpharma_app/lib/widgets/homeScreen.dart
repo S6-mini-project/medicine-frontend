@@ -17,11 +17,12 @@ class HomeScreen extends StatelessWidget {
           TopBar(),
           SearchInput(),
           PromoCard(),
-          Headline(),
-
           SHeadline(),
         
           StockStatusWidget(),
+          Headline(),
+
+        
           // StockStatusWidget(),
           // StockStatusWidget(),
           // StockStatusWidget(),
@@ -128,7 +129,7 @@ class PromoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.all(10.0),
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 150,
