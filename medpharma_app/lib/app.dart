@@ -6,27 +6,32 @@ import 'widgets/orderScreen.dart';
 import './widgets/profileScreen.dart';
 import './widgets/loginWidget.dart'; 
 import './widgets/notificationScreen.dart';
+import 'package:provider/provider.dart';
+import './services/notification.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-       home: MyNavigationBar(),
-         initialRoute: '/login',  
-    routes: {  
-    //   // When navigating to the "/" route, build the FirstScreen widget.  
-      '/login': (context) => LoginWidget(),
-      '/home': (context) => MyNavigationBar(), 
-      '/users': (context) => MyNavigationBar(),
-      '/notifications': (context) => NotificationScreen(),
-      '/orders': (context) => MyNavigationBar()//routes
-    //   // When navigating to the "/second" route, build the SecondScreen widget.  
-    //   '/orders': (context) => OrderScreen(),  //routes
-     },  
+    return MultiProvider(
+      child: MaterialApp(
+         home: MyNavigationBar(),
+           initialRoute: '/login',  
+      routes: {  
+      //   // When navigating to the "/" route, build the FirstScreen widget.  
+        '/login': (context) => LoginWidget(),
+        '/home': (context) => MyNavigationBar(), 
+        '/users': (context) => MyNavigationBar(),
+        '/notifications': (context) => NotificationScreen(),
+        '/orders': (context) => MyNavigationBar()//routes
+      //   // When navigating to the "/second" route, build the SecondScreen widget.  
+      //   '/orders': (context) => OrderScreen(),  //routes
+       }, 
+      ),
+       providers: [
+          ChangeNotifierProvider(create: (_) => NotificationService())
+        ]
     );
   }
 }
-
-
 
 class MyNavigationBar extends StatefulWidget {
   MyNavigationBar({Key? key}) : super(key: key);

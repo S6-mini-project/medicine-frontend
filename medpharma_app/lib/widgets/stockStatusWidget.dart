@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:medpharma_app/api/medweight.dart';
+import '../services/notification.dart';
+import 'package:provider/provider.dart';
 
 class StockStatusWidget extends StatefulWidget {
   StockStatusWidget({Key? key}) : super(key: key);
@@ -11,19 +14,35 @@ class StockStatusWidget extends StatefulWidget {
 
 class _StockStatusWidgetState extends State<StockStatusWidget> {
   Medweight weight = Medweight();
+  int? wt;
+  NotificationService notification = NotificationService();
+  @override
+  void initState() {
+    Provider.of<NotificationService>(context, listen: false).initialize();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: FutureBuilder<List>(
           future: weight.getMedWeight(),
           builder: (context, snapshot) {
-            print(snapshot.data![0]['medicine_weight']);
             if (snapshot.hasData) {
               return ListView.builder(
-                scrollDirection: Axis.vertical,
+                  scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemCount: snapshot.data?.length,
                   itemBuilder: (context, i) {
+                    wt = int.parse(snapshot.data![i]['medicine_weight']);
+                    if (wt! <= 30) {
+                        Provider.of<NotificationService>(context, listen: false).instantNofitication();
+                    }
+                    // if( (int.parse(snapshot.data![i]['medicine_weight'] < 30)== true)){
+
+                    //           Provider.of<NotificationService>(context, listen: false).instantNofitication();
+
+                    // }
                     return Container(
                       height: MediaQuery.of(context).size.height * .18,
                       width: MediaQuery.of(context).size.width,
@@ -66,7 +85,9 @@ class _StockStatusWidgetState extends State<StockStatusWidget> {
                                 percent: 0.5,
                                 center: new Text(
                                   // "50.0%",
-                                  snapshot.data![i]['medicine_weight']+" "+"mg",
+                                  snapshot.data![i]['medicine_weight'] +
+                                      " " +
+                                      "mg",
                                   style: new TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0,
