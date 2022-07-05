@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 
-
 class ProfileWidget extends StatelessWidget {
   /// the base color of the images background and its concentric circles.
   final Color primaryColor;
@@ -220,7 +219,8 @@ class Headline extends StatelessWidget {
               ),
             ]),
           ),
-          
+          SizedBox(height: 50,),
+          Pie()
         ],
       ),
     );
@@ -230,3 +230,53 @@ class Headline extends StatelessWidget {
 
 
 // pie chart
+class Pie extends StatefulWidget {
+  const Pie({Key? key}) : super(key: key);
+
+  @override
+   PieState createState() =>  PieState();
+}
+
+class  PieState extends State<Pie> {
+  
+Map<String, double> dataMap = {
+    "Paracetamol": 5,
+    "Citrusene": 3,
+    "Acethromycin": 2,
+    "Aspirine": 1,
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return PieChart(
+      dataMap: dataMap,
+      animationDuration: Duration(milliseconds: 800),
+      chartLegendSpacing: 32,
+      chartRadius: MediaQuery.of(context).size.width / 2.6,
+      // colorList: colorList,
+      initialAngleInDegree: 0,
+      chartType: ChartType.ring,
+      ringStrokeWidth: 32,
+      centerText: "Medicines",
+      legendOptions: LegendOptions(
+        showLegendsInRow: false,
+        legendPosition: LegendPosition.right,
+        showLegends: true,
+        legendShape: BoxShape.circle,
+        legendTextStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      chartValuesOptions: ChartValuesOptions(
+        showChartValueBackground: true,
+        showChartValues: true,
+        showChartValuesInPercentage: false,
+        showChartValuesOutside: false,
+        decimalPlaces: 1,
+      ),
+      // gradientList: ---To add gradient colors---
+      // emptyColorGradient: ---Empty Color gradient---
+    );
+  }
+}
