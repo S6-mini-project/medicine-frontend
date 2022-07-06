@@ -4,32 +4,33 @@ import './widgets/drawerCardWidget.dart';
 import 'widgets/homeScreen.dart';
 import 'widgets/orderScreen.dart';
 import './widgets/profileScreen.dart';
-import './widgets/loginWidget.dart'; 
+import './widgets/loginWidget.dart';
 import './widgets/notificationScreen.dart';
 import 'package:provider/provider.dart';
 import './services/notification.dart';
+import './api/login.dart';
+
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      child: MaterialApp(
-         home: MyNavigationBar(),
-           initialRoute: '/login',  
-      routes: {  
-      //   // When navigating to the "/" route, build the FirstScreen widget.  
-        '/login': (context) => LoginWidget(),
-        '/home': (context) => MyNavigationBar(), 
-        '/users': (context) => MyNavigationBar(),
-        '/notifications': (context) => NotificationScreen(),
-        '/orders': (context) => MyNavigationBar()//routes
-      //   // When navigating to the "/second" route, build the SecondScreen widget.  
-      //   '/orders': (context) => OrderScreen(),  //routes
-       }, 
-      ),
-       providers: [
+        child: MaterialApp(
+          home: MyNavigationBar(),
+          initialRoute: '/login',
+          routes: {
+            //   // When navigating to the "/" route, build the FirstScreen widget.
+            '/login': (context) => LoginWidget(),
+            '/home': (context) => MyNavigationBar(),
+            '/users': (context) => MyNavigationBar(),
+            '/notifications': (context) => NotificationScreen(),
+            '/orders': (context) => MyNavigationBar() //routes
+            //   // When navigating to the "/second" route, build the SecondScreen widget.
+            //   '/orders': (context) => OrderScreen(),  //routes
+          },
+        ),
+        providers: [
           ChangeNotifierProvider(create: (_) => NotificationService())
-        ]
-    );
+        ]);
   }
 }
 
@@ -42,7 +43,7 @@ class MyNavigationBar extends StatefulWidget {
 
 class _MyNavigationBarState extends State<MyNavigationBar> {
   int _selectedIndex = 0;
-  static  List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     OrderScreen(),
     ProfileScreen(),
@@ -57,7 +58,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       body: _widgetOptions.elementAt(_selectedIndex),
+      body: _widgetOptions.elementAt(_selectedIndex),
       backgroundColor: Color.fromARGB(255, 249, 249, 249),
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(70.0),
@@ -133,7 +134,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             ),
             onTap: () {
               print("home pressed");
-                Navigator.pushNamed(context, '/home');  
+              Navigator.pushNamed(context, '/home');
             },
             hoverColor: Colors.black38,
             leading: Icon(
@@ -158,7 +159,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             ),
             onTap: () {
               print("User pressed");
-                Navigator.pushNamed(context, '/users');  
+              Navigator.pushNamed(context, '/users');
             },
             hoverColor: Colors.black38,
             leading: Icon(
@@ -183,7 +184,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             ),
             onTap: () {
               print("stocks pressed");
-                Navigator.pushNamed(context, '/orders');  
+              Navigator.pushNamed(context, '/orders');
             },
             hoverColor: Colors.black38,
             leading: Icon(
@@ -206,8 +207,14 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                 fontFamily: "poppins",
               ),
             ),
-            onTap: () { 
-                Navigator.pushNamed(context, '/login');  
+            onTap: () {
+              logout().then((value) {
+                if (value) {
+                  print('logout');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginWidget()));
+                }
+              });
             },
             hoverColor: Colors.black38,
             leading: Icon(
@@ -229,7 +236,6 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             icon: Icon(
               Icons.shopping_bag_outlined,
             ),
-          
             label: "Orders",
           ),
           BottomNavigationBarItem(
@@ -237,7 +243,6 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
               Icons.person_outlined,
             ),
             label: "Profile",
-           
           ),
         ],
         type: BottomNavigationBarType.shifting,
@@ -263,4 +268,3 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
 //      );
 //    }
 //  }
-  

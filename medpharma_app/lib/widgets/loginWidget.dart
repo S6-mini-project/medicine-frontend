@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
-import './usernameWidget.dart';
-import './passWidget.dart';
+import 'package:medpharma_app/app.dart';
+import '../api/login.dart';
 import './loginImgWidget.dart';
+import '../app.dart';
 
-class LoginWidget extends StatelessWidget {
+class LoginWidget extends StatefulWidget {
+  @override
+  _LoginWidgetState createState() => _LoginWidgetState();
+}
+
+class _LoginWidgetState extends State<LoginWidget> {
+  bool ueCheck = true;
+  bool passCheck = true;
+
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,18 +24,80 @@ class LoginWidget extends StatelessWidget {
         children: [
           SizedBox(
             height: MediaQuery.of(context).size.height * .45,
-            // height: 100,
             child: LoginImgWidget(),
           ),
+          //login widget
           SizedBox(
-            height: MediaQuery.of(context).size.height * .12,
-            //  height: 100,
-            child: UsernameWidget(),
-          ),
+              height: MediaQuery.of(context).size.height * .12,
+
+              // child: UsernameWidget(),
+              child: TextField(
+                controller: emailController,
+                keyboardType: TextInputType.multiline,
+                // onChanged: (String value) {
+                //   print(value);
+                // },
+                onTap: () {
+                  print("tapped");
+                },
+                decoration: InputDecoration(
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Color.fromARGB(112, 146, 146, 146)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(185, 200, 196, 196),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  hintText: "Email",
+                  errorText: ueCheck ? null : 'Email cannot be empty',
+                  hintStyle: TextStyle(
+                    color: Color.fromARGB(141, 131, 127, 127),
+                    fontFamily: "Poppins",
+                    fontSize: 18,
+                  ),
+                  helperStyle: TextStyle(
+                    fontFamily: "Poppins",
+                  ),
+                ),
+              )),
+
+          // login finished
+
           SizedBox(
-            // height:  MediaQuery.of(context).size.height*.4,
-            //  height: 100,
-            child: PassWidget(),
+            // child: PassWidget(),
+            child: TextField(
+              controller: passController,
+              keyboardType: TextInputType.multiline,
+              onChanged: (String value) {
+                print(value);
+              },
+              onTap: () {
+                print("tapped");
+              },
+              decoration: InputDecoration(
+                enabledBorder: UnderlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Color.fromARGB(112, 146, 146, 146))),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(185, 200, 196, 196),
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                hintText: "Password",
+                errorText: passCheck ? null : 'Password cannot be empty',
+                hintStyle: TextStyle(
+                  fontFamily: "Poppins",
+                  color: Color.fromARGB(141, 131, 127, 127),
+                  fontSize: 18,
+                ),
+              ),
+            ),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * .03,
@@ -47,7 +121,7 @@ class LoginWidget extends StatelessWidget {
                   FlatButton(
                     onPressed: () {
                       print("hii");
-                        Navigator.pushNamed(context, '/home');  
+                        _validateLogin();
                     },
                     onLongPress: () {
                       print("long press");
@@ -63,46 +137,70 @@ class LoginWidget extends StatelessWidget {
                   ),
                 ],
               )),
-              SizedBox(
-              height: MediaQuery.of(context).size.height * .03
-            ) ,
+          SizedBox(height: MediaQuery.of(context).size.height * .03),
           SizedBox(
-            child: Column(
-              children: [
-                Text(
-              "Dont have an account?",
-              style: TextStyle(
-                fontFamily: "poppins",
-                color: Color.fromARGB(182, 27, 26, 26),
-                fontWeight: FontWeight.w600,
+              child: Column(
+            children: [
+              Text(
+                "Dont have an account?",
+                style: TextStyle(
+                  fontFamily: "poppins",
+                  color: Color.fromARGB(182, 27, 26, 26),
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-            ),
-            
-            FlatButton(
-              onPressed: () {
-              print("sign up pressed");
-            },
-            color:  Color.fromARGB(255, 228, 222, 222),
-            splashColor:  Color.fromARGB(208, 0, 0, 0),
-             highlightColor: Color.fromARGB(96, 108, 105, 105),
-            padding: EdgeInsets.all(10),
-             shape: StadiumBorder(),
-            child:  Text(
-              "Sign up",
-              style: TextStyle(
-                fontFamily: "poppins",
-                color: Color.fromARGB(182, 27, 26, 26),
-                fontWeight: FontWeight.w600,
-                decoration: TextDecoration.underline,
-              ),
-            ),
-            )
-              ],
-              
-            ) 
-          )
+              FlatButton(
+                onPressed: () {
+                  print("sign up pressed");
+                },
+                color: Color.fromARGB(255, 228, 222, 222),
+                splashColor: Color.fromARGB(208, 0, 0, 0),
+                highlightColor: Color.fromARGB(96, 108, 105, 105),
+                padding: EdgeInsets.all(10),
+                shape: StadiumBorder(),
+                child: Text(
+                  "Sign up",
+                  style: TextStyle(
+                    fontFamily: "poppins",
+                    color: Color.fromARGB(182, 27, 26, 26),
+                    fontWeight: FontWeight.w600,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              )
+            ],
+          ))
         ],
       ),
     );
+  }
+
+  //validation method
+  void _validateLogin() {
+    String id = emailController.text;
+    String pass = passController.text;
+    setState(() {
+      ueCheck = true;
+      passCheck = true;
+    });
+    if (id.isEmpty) {
+      setState(() {
+        ueCheck = false;
+      });
+    } else if (pass.isEmpty) {
+      setState(() {
+        passCheck = false;
+      });
+    } else {
+      login(id, pass).then((value) {
+        if (value) {
+          print('Authenticated');
+          print(refresh_token);
+          print(access_token);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => MyNavigationBar()));
+        }
+      });
+    }
   }
 }
