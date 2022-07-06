@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:medpharma_app/api/user.dart';
 import 'package:pie_chart/pie_chart.dart';
+import '../api/user_profile.dart';
+
+
 
 class ProfileWidget extends StatelessWidget {
   /// the base color of the images background and its concentric circles.
@@ -81,13 +85,17 @@ class ProfileWidget extends StatelessWidget {
                                 fit: BoxFit.cover, image: image)))),
               ],
             ),
-            Text(
-              "Amarjith Raj",
-              style: TextStyle(
-                  fontFamily: "poppins",
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30),
-            )
+            // Text(
+            //   "Amarjith Raj",
+            //   style: TextStyle(
+            //       fontFamily: "poppins",
+            //       fontWeight: FontWeight.bold,
+            //       fontSize: 30),
+            // )
+           
+                UserName(),
+           
+            
           ],
         ),
         SizedBox(
@@ -278,5 +286,55 @@ Map<String, double> dataMap = {
       // gradientList: ---To add gradient colors---
       // emptyColorGradient: ---Empty Color gradient---
     );
+  }
+}
+
+class UserName extends StatefulWidget {
+  
+  const UserName({Key? key}) : super(key: key);
+  @override
+  State<UserName> createState() => _UserNameState();
+}
+
+class _UserNameState extends State<UserName> {
+String Name=' ';
+
+  void callInit() async {
+    await getProfile();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // callInit();
+  }
+  @override
+  Widget build(BuildContext context) {
+          getProfile().then((value) {
+        if (value) {
+          print(user_name);
+        }
+      });
+    
+      return  Column(
+        children: [
+          Text(
+                  user_name,
+                  style: TextStyle(
+                      fontFamily: "poppins",
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30),
+                ),
+                  Text(
+                  email_id,
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                      fontFamily: "poppins",
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15),
+                ),
+        ],
+      );
   }
 }

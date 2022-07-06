@@ -52,7 +52,7 @@ Future<bool> login(String id, String pass) async {
       access_token = value.access_token;
       refresh_token = value.refresh_token;
       print('Tokens Generated');
-      // getProfile();
+      getProfile();
     });
   } catch (e) {
     print('Error');

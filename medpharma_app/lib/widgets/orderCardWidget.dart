@@ -73,17 +73,17 @@ class OrderCardWidgetState extends State {
                           barrierColor: Colors.white24,
                           context: context,
                           builder: (ctx) => AlertDialog(
-                            backgroundColor: Color.fromARGB(255, 14, 30, 38),
+                            backgroundColor: Color.fromARGB(255, 234, 251, 251),
                             title: Text(
                               "Confirm your Order",
                               style: TextStyle(
                                 fontFamily: "poppins",
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 246, 249, 47),
-                                decoration: TextDecoration.underline,
-                                decorationThickness: 2,
-                                decorationStyle: TextDecorationStyle.dotted,
+                                color: Color.fromARGB(255, 15, 3, 82),
+                                // decoration: TextDecoration.underline,
+                                // decorationThickness: 2,
+                                // decorationStyle: TextDecorationStyle.dotted,
                                 decorationColor:
                                     Color.fromARGB(186, 245, 73, 73),
                               ),
@@ -98,14 +98,14 @@ class OrderCardWidgetState extends State {
                                     "1000Rs ",
                                 style: TextStyle(
                                   fontFamily: "poppins",
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff15BE77),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w900,
+                                  color: Color.fromARGB(255, 8, 28, 201),
                                 ),
                               ),
                               decoration: BoxDecoration(
                                   border: Border.all(
-                                      color: Color.fromARGB(255, 15, 45, 143)),
+                                      color: Color.fromARGB(255, 20, 20, 130)),
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(20))),
                             ),
@@ -119,7 +119,7 @@ class OrderCardWidgetState extends State {
                                 onPressed: () {
                                   Navigator.of(ctx).pop();
                                 },
-                                color: Colors.pinkAccent,
+                                color: Colors.green,
                                 splashColor: Colors.white12,
                                 child: Text(
                                   "ok",
@@ -127,7 +127,7 @@ class OrderCardWidgetState extends State {
                                     fontFamily: "poppins",
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold,
-                                    color: Color(0xff15BE77),
+                                    color: Color.fromARGB(255, 235, 237, 237),
                                   ),
                                 ),
                               ),

@@ -16,14 +16,14 @@ class Profile {
 
   Profile(
       {required this.email_id,
-      required this.user_id,
-      required this.user_name});
+      required this.user_name,
+       required this.user_id});
 
   factory Profile.fromJson(Map<String, dynamic> json) {
     return Profile(
       user_id: json['id'].toString(),
       email_id: json['email'],
-      user_name: json['username'],
+      user_name: json['name'],
     );
   }
 }
@@ -39,14 +39,15 @@ void copy({
 }
 
 Future<Profile> _getProfile() async {
+  // print(access_token);
   final response = await http.get(
     Uri.parse('http://192.168.18.178:5000/api/profile'), //TODO
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
-      'Authorization': 'Bearer' + access_token,
+      'Authorization': 'Bearer '+access_token,
     },
   );
-  print(response.body);
+  // print(response.body);
   if (response.statusCode == 200) {
     // If the server did return a 201 CREATED response,
     // then parse the JSON.
@@ -63,7 +64,7 @@ Future<bool> getProfile() async {
   print('Get Profile Invoked');
   try {
     await _getProfile().then((value) {
-      print(email_id);
+      // print(email_id);
       email_id = value.email_id;
       user_id = value.user_id;
       user_name = value.user_name;
