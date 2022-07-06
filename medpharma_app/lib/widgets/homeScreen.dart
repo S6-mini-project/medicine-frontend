@@ -10,6 +10,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Color.fromARGB(255, 6, 23, 52),
         body: Padding(
       padding: const EdgeInsets.all(10.0),
       child: ListView(
@@ -47,7 +48,7 @@ class TopBar extends StatelessWidget {
           const Text(
             "Find your\n Medicine",
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.blueGrey,
               fontSize: 30,
               fontWeight: FontWeight.bold,
               fontFamily: "poppins",
@@ -63,11 +64,11 @@ class TopBar extends StatelessWidget {
             ]),
             child: const CircleAvatar(
               radius: 25,
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.blueGrey,
               child: Icon(
                 Icons.medical_services,
                 size: 25,
-                color: Color.fromARGB(255, 95, 83, 232),
+                color: Color.fromARGB(255, 6, 23, 52),
               ),
             ),
           )
@@ -100,7 +101,7 @@ class SearchInput extends StatelessWidget {
           decoration: const InputDecoration(
             prefixIcon: Icon(Icons.search),
             filled: true,
-            fillColor: Colors.white,
+            fillColor: Colors.black12,
             hintText: 'Search',
             hintStyle: TextStyle(color: Colors.grey),
             contentPadding:
@@ -109,11 +110,11 @@ class SearchInput extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(15.0)),
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white, width: 1.0),
+              borderSide: BorderSide(color: Color.fromARGB(255, 0, 17, 45), width: 1.0),
               borderRadius: BorderRadius.all(Radius.circular(15.0)),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white, width: 2.0),
+              borderSide: BorderSide(color: Color.fromARGB(255, 5, 28, 66), width: 2.0),
               borderRadius: BorderRadius.all(Radius.circular(15.0)),
             ),
           ),
@@ -152,7 +153,7 @@ class PromoCard extends StatelessWidget {
                 child: Text(
                   "Medpharma \ndelivery made easy",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.blue,
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                     fontFamily: "poppins",
@@ -181,7 +182,7 @@ class Headline extends StatelessWidget {
               Text(
                 "Quick Services",
                 style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.blue,
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
                     fontFamily: "poppins"),
@@ -211,7 +212,7 @@ class SHeadline extends StatelessWidget {
               Text(
                 "Current Stocks",
                 style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.blue,
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
                     fontFamily: "poppins"),

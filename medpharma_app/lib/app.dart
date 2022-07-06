@@ -61,13 +61,13 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
       body: _widgetOptions.elementAt(_selectedIndex),
       backgroundColor: Color.fromARGB(255, 249, 249, 249),
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(70.0),
+          preferredSize: Size.fromHeight(60.0),
           child: AppBar(
             leading: Builder(
               builder: (context) => IconButton(
                 icon: Icon(
                   Icons.menu,
-                  color: Colors.black,
+                  color: Colors.blueGrey,
                   size: 35,
                 ),
                 padding: EdgeInsets.all(17),
@@ -76,7 +76,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                 },
               ),
             ),
-            backgroundColor: Color.fromARGB(255, 249, 249, 249),
+            backgroundColor: Color.fromARGB(255, 0, 17, 45),
             elevation: 0.1,
             actions: [
               IconButton(
@@ -85,8 +85,8 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                   Navigator.pushNamed(context, '/notifications');
                 },
                 icon: Icon(
-                  Icons.notifications_outlined,
-                  color: Colors.black,
+                  Icons.notifications,
+                  color: Colors.blueGrey,
                   size: 35,
                 ),
                 padding: EdgeInsets.all(17),
@@ -99,8 +99,8 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                   print("icon button2 pressed");
                 },
                 icon: Icon(
-                  Icons.shopping_cart_outlined,
-                  color: Colors.black,
+                  Icons.shopping_cart,
+                  color: Colors.blueGrey,
                   size: 35,
                 ),
                 padding: EdgeInsets.all(17),
@@ -111,145 +111,157 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             ],
           )),
       drawer: Drawer(
+          backgroundColor: Color.fromARGB(255, 6, 23, 52),
           child: ListView(
-        children: [
-          DrawerHeader(
-            child: Center(
-              child: DrawerCardWidget(),
-            ),
-            decoration: BoxDecoration(color: Colors.white),
-          ),
-          ListTile(
-            title: Text(
-              "home",
-              style: TextStyle(
-                fontFamily: "poppins",
+            children: [
+              DrawerHeader(
+                child: Center(
+                  child: DrawerCardWidget(),
+                ),
+                decoration: BoxDecoration(color: Color.fromARGB(255, 0, 17, 45),),
               ),
-            ),
-            subtitle: Text(
-              "go to home page",
-              style: TextStyle(
-                fontFamily: "poppins",
+              ListTile(
+                title: Text(
+                  "home",
+                  style: TextStyle(
+                  color: Colors.blueGrey,
+                    fontFamily: "poppins",
+                  ),
+                ),
+                subtitle: Text(
+                  "go to home page",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontFamily: "poppins",
+                  ),
+                ),
+                onTap: () {
+                  print("home pressed");
+                  Navigator.pushNamed(context, '/home');
+                },
+                hoverColor: Colors.black38,
+                leading: Icon(
+                  Icons.home_filled,
+                  size: 40,
+                  color: Colors.blueGrey,
+                ),
+                trailing: Icon(Icons.keyboard_arrow_right_rounded),
               ),
-            ),
-            onTap: () {
-              print("home pressed");
-              Navigator.pushNamed(context, '/home');
-            },
-            hoverColor: Colors.black38,
-            leading: Icon(
-              Icons.home_filled,
-              size: 40,
-              color: Colors.indigo,
-            ),
-            trailing: Icon(Icons.keyboard_arrow_right_rounded),
-          ),
-          ListTile(
-            title: Text(
-              "User Details",
-              style: TextStyle(
-                fontFamily: "poppins",
+              ListTile(
+                title: Text(
+                  "User Details",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontFamily: "poppins",
+                  ),
+                ),
+                subtitle: Text(
+                  "Display user details",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontFamily: "poppins",
+                  ),
+                ),
+                onTap: () {
+                  print("User pressed");
+                  Navigator.pushNamed(context, '/users');
+                },
+                hoverColor: Colors.black38,
+                leading: Icon(
+                  Icons.person,
+                  size: 40,
+                  color: Colors.blueGrey,
+                ),
+                trailing: Icon(Icons.keyboard_arrow_right_rounded),
               ),
-            ),
-            subtitle: Text(
-              "Display user details",
-              style: TextStyle(
-                fontFamily: "poppins",
+              ListTile(
+                title: Text(
+                  "Orders",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontFamily: "poppins",
+                  ),
+                ),
+                subtitle: Text(
+                  "display medicine orders",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontFamily: "poppins",
+                  ),
+                ),
+                onTap: () {
+                  print("stocks pressed");
+                  Navigator.pushNamed(context, '/orders');
+                },
+                hoverColor: Colors.black38,
+                leading: Icon(
+                  Icons.shopify_sharp,
+                  size: 40,
+                  color: Colors.blueGrey,
+                ),
+                trailing: Icon(Icons.keyboard_arrow_right_rounded),
               ),
-            ),
-            onTap: () {
-              print("User pressed");
-              Navigator.pushNamed(context, '/users');
-            },
-            hoverColor: Colors.black38,
-            leading: Icon(
-              Icons.person,
-              size: 40,
-              color: Colors.indigo,
-            ),
-            trailing: Icon(Icons.keyboard_arrow_right_rounded),
-          ),
-          ListTile(
-            title: Text(
-              "Orders",
-              style: TextStyle(
-                fontFamily: "poppins",
+              ListTile(
+                title: Text(
+                  "Logout",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontFamily: "poppins",
+                  ),
+                ),
+                subtitle: Text(
+                  "Logout of the app",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontFamily: "poppins",
+                  ),
+                ),
+                onTap: () {
+                  logout().then((value) {
+                    if (value) {
+                      print('logout');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginWidget()));
+                    }
+                  });
+                },
+                hoverColor: Colors.black38,
+                leading: Icon(
+                  Icons.power_settings_new_rounded,
+                  size: 40,
+                  color: Colors.blueGrey,
+                ),
+                trailing: Icon(Icons.keyboard_arrow_right_rounded),
               ),
-            ),
-            subtitle: Text(
-              "display medicine orders",
-              style: TextStyle(
-                fontFamily: "poppins",
-              ),
-            ),
-            onTap: () {
-              print("stocks pressed");
-              Navigator.pushNamed(context, '/orders');
-            },
-            hoverColor: Colors.black38,
-            leading: Icon(
-              Icons.shopify_sharp,
-              size: 40,
-              color: Colors.indigo,
-            ),
-            trailing: Icon(Icons.keyboard_arrow_right_rounded),
-          ),
-          ListTile(
-            title: Text(
-              "Logout",
-              style: TextStyle(
-                fontFamily: "poppins",
-              ),
-            ),
-            subtitle: Text(
-              "Logout of the app",
-              style: TextStyle(
-                fontFamily: "poppins",
-              ),
-            ),
-            onTap: () {
-              logout().then((value) {
-                if (value) {
-                  print('logout');
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginWidget()));
-                }
-              });
-            },
-            hoverColor: Colors.black38,
-            leading: Icon(
-              Icons.power_settings_new_rounded,
-              size: 40,
-              color: Colors.indigo,
-            ),
-            trailing: Icon(Icons.keyboard_arrow_right_rounded),
-          ),
-        ],
-      )),
+            ],
+          )),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
+            icon: Icon(Icons.home),
             label: "Home",
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.shopping_bag_outlined,
+              Icons.shopping_bag,
             ),
             label: "Orders",
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person_outlined,
+              Icons.person,
             ),
             label: "Profile",
           ),
         ],
-        type: BottomNavigationBarType.shifting,
+        // type: BottomNavigationBarType.shifting,
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.indigo,
-        unselectedItemColor: Colors.black38,
-        iconSize: 32,
+        backgroundColor: Color.fromARGB(255, 0, 17, 45),
+        selectedItemColor: Colors.lime,
+        unselectedItemColor: Colors.blueGrey,
+        iconSize: 30,
         onTap: _onItemTapped,
         elevation: 1,
       ),

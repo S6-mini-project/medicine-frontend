@@ -35,8 +35,8 @@ class OrderCardWidgetState extends State {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
-          color: Color.fromARGB(255, 28, 31, 31),
-          elevation: 1,
+          color: Color.fromARGB(255, 8, 33, 75),
+          elevation: 6,
           child: Padding(
             padding: const EdgeInsets.all(13.0),
             child: Column(
@@ -49,7 +49,7 @@ class OrderCardWidgetState extends State {
                     fontFamily: "poppins",
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 255, 255, 255),
+                    color: Colors.blueGrey,
                   ),
                 ),
                 Text(
@@ -58,7 +58,7 @@ class OrderCardWidgetState extends State {
                     fontFamily: "poppins",
                     fontSize: 18,
                     fontWeight: FontWeight.w400,
-                    color: Color.fromARGB(255, 255, 255, 255),
+                    color: Colors.redAccent,
                   ),
                 ),
                 SizedBox(
@@ -67,6 +67,7 @@ class OrderCardWidgetState extends State {
                 Row(
                   children: [
                     RaisedButton(
+                      focusElevation: 4,
                       onPressed: () {
                         // print("hii");
                         showDialog(
@@ -139,27 +140,30 @@ class OrderCardWidgetState extends State {
                         print("long press");
                       },
                       child: Text(
-                        "order now",
-                        style: TextStyle(fontFamily: "poppins", fontSize: 20),
+                        "ok",
+                        style: TextStyle(
+                            color: Colors.white70,
+                            fontFamily: "poppins",
+                            fontSize: 20),
                       ),
-                      textColor: Colors.white,
-                      color: Colors.indigoAccent,
+                      textColor: Colors.blueGrey,
+                      color: Color.fromARGB(255, 24, 48, 90),
                       splashColor: Color.fromARGB(87, 18, 18, 18),
                       highlightColor: Colors.black38,
                       disabledColor: Colors.blue,
                       disabledTextColor: Colors.blueGrey,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
+                        borderRadius: BorderRadius.circular(12.0),
                       ),
                       padding: EdgeInsets.only(
                           left: 35, right: 35, top: 12, bottom: 12),
                     ),
                     SizedBox(
-                      width: 90,
+                      width: 140,
                     ),
                     Material(
                       borderRadius: BorderRadius.circular(110),
-                      color: Color.fromARGB(255, 24, 23, 22),
+                      color: Color.fromARGB(255, 6, 23, 52),
                       child: IconButton(
                         onPressed: () {
                           print("icon button pressed");
@@ -170,10 +174,10 @@ class OrderCardWidgetState extends State {
                             Color.fromARGB(245, 224, 84, 71).withOpacity(0.4),
                         highlightColor: Color.fromARGB(210, 234, 100, 100),
                         icon: Icon(
-                          Icons.cancel_sharp,
+                          Icons.cancel_presentation_outlined,
                           size: 50,
                           // color: Colors.indigoAccent,
-                          color: Colors.red,
+                          color: Colors.green,
                         ),
                         padding: EdgeInsets.only(),
                         // alignment: Alignment.center,

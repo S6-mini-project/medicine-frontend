@@ -125,7 +125,7 @@ class Headline extends StatelessWidget {
                   Text(
                     "Quick Services",
                     style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.normal,
                         fontFamily: "poppins"),
@@ -267,21 +267,27 @@ Map<String, double> dataMap = {
       chartType: ChartType.ring,
       ringStrokeWidth: 32,
       centerText: "Medicines",
+      centerTextStyle: TextStyle(
+        color: Colors.green
+      ),
       legendOptions: LegendOptions(
         showLegendsInRow: false,
         legendPosition: LegendPosition.right,
         showLegends: true,
         legendShape: BoxShape.circle,
         legendTextStyle: TextStyle(
+          color: Colors.blueAccent,
           fontWeight: FontWeight.bold,
         ),
       ),
       chartValuesOptions: ChartValuesOptions(
+        chartValueBackgroundColor: Color.fromARGB(255, 26, 57, 111),
         showChartValueBackground: true,
         showChartValues: true,
+        chartValueStyle: TextStyle(color: Colors.green),
         showChartValuesInPercentage: false,
         showChartValuesOutside: false,
-        decimalPlaces: 1,
+        // decimalPlaces: 1,
       ),
       // gradientList: ---To add gradient colors---
       // emptyColorGradient: ---Empty Color gradient---
@@ -322,6 +328,7 @@ String Name=' ';
           Text(
                   user_name,
                   style: TextStyle(
+                      color: Colors.green,
                       fontFamily: "poppins",
                       fontWeight: FontWeight.bold,
                       fontSize: 30),

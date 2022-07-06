@@ -37,7 +37,7 @@ class OrderWidgetState extends State {
                 Text(
                   "All Orders",
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.blueGrey,
                     fontFamily: "poppins",
                     fontSize: 32,
                     fontWeight: FontWeight.w600,
@@ -51,7 +51,7 @@ class OrderWidgetState extends State {
                   splashRadius: 23,
                   icon: Icon(
                     Icons.keyboard_arrow_down,
-                    color: Colors.black,
+                    color: Colors.blueGrey,
                     size: 35,
                   ),
                   padding:
@@ -65,7 +65,7 @@ class OrderWidgetState extends State {
                   splashRadius: 23,
                   icon: Icon(
                     Icons.keyboard_arrow_up,
-                    color: Colors.black,
+                    color: Colors.blueGrey,
                     size: 35,
                   ),
                   padding:
@@ -101,7 +101,7 @@ class OrderWidgetState extends State {
                           return Text(
                             "No Orders for now come back later",
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.blueGrey,
                               fontFamily: "poppins",
                               fontSize: 32,
                               fontWeight: FontWeight.w600,

@@ -7,7 +7,7 @@ class OrderScreen extends StatelessWidget{
   Widget build(BuildContext context) {
    return  Scaffold(
       body: OrderWidget(),
-      backgroundColor: Color.fromARGB(255, 249, 249, 249),
+      backgroundColor: Color.fromARGB(255, 6, 23, 52),
       );
   }
 }

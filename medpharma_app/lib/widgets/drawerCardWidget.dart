@@ -43,7 +43,7 @@ class _DrawerCardState extends State<DrawerCardWidget> {
       ),
       title: Text(user_name,
           style: TextStyle(
-            color: Colors.orange,
+            color: Colors.green,
             fontSize: 25.0,
             fontFamily: "poppins",
             fontWeight: FontWeight.bold,
@@ -51,6 +51,7 @@ class _DrawerCardState extends State<DrawerCardWidget> {
       subtitle: Text(
         'Welcome ' + user_name,
         style: TextStyle(
+          color: Colors.blueAccent,
           fontFamily: "poppins",
           fontWeight: FontWeight.bold,
         ),
