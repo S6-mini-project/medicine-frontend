@@ -72,7 +72,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           SizedBox(
             // child: PassWidget(),
             child: TextField(
-              style: TextStyle(color: Colors.teal[700]),
+              style: TextStyle(color: Colors.teal[700],fontFamily: "poppins"),
               controller: passController,
               keyboardType: TextInputType.multiline,
               onChanged: (String value) {

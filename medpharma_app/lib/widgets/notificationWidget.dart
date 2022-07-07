@@ -1,184 +1,157 @@
 import 'package:flutter/material.dart';
+import 'package:medpharma_app/api/medweight.dart';
 
-class NotificationWidget extends StatelessWidget {
+class NotificationWidget extends StatefulWidget {
+  @override
+  NotificationWidgetState createState() => NotificationWidgetState();
+}
+
+class NotificationWidgetState extends State {
+  Medweight weight = Medweight();
+  bool viewVisible = true;
+  int? wt;
+  void showWidget() {
+    setState(() {
+      viewVisible = true;
+    });
+  }
+
+  void hideWidget() {
+    setState(() {
+      viewVisible = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        // Container(
-        //   height: MediaQuery.of(context).size.height * .5,
-        //   width: MediaQuery.of(context).size.width,
-        //   child: Image.asset(
-        //     "assets/waves.png",
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
-
-        Text(
-          textAlign: TextAlign.center,
-          "Notifications",
-          style: TextStyle(
-            fontFamily: "poppins",
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-            color: Color.fromARGB(255, 81, 81, 81),
-          ),
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        Container(
-          // width: MediaQuery.of(context).size.width * .7,
-          height: MediaQuery.of(context).size.height * .08,
-          margin: EdgeInsets.all(10),
-          child: Center(
-            child: Text(
-              "Paracetamol",
-              style: TextStyle(
-                fontFamily: "poppins",
-                fontWeight: FontWeight.bold,
-                fontSize: 23,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.circular(30),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                spreadRadius: 1,
-                blurRadius: 1,
-                offset: Offset(1, 1),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          // width: MediaQuery.of(context).size.width * .9,
-          height: MediaQuery.of(context).size.height * .08,
-          margin: EdgeInsets.all(10),
-          child: Center(
-            child: Text(
-              "Paracetamol",
-              style: TextStyle(
-                fontFamily: "poppins",
-                fontWeight: FontWeight.bold,
-                fontSize: 23,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 81, 81, 81),
-            borderRadius: BorderRadius.circular(30),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                spreadRadius: 1,
-                blurRadius: 1,
-                offset: Offset(1, 1),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          // width: MediaQuery.of(context).size.width * .9,
-          height: MediaQuery.of(context).size.height * .08,
-          margin: EdgeInsets.all(10),
-          child: Center(
-            child: Center(
-              child: Text(
-                "Paracetamol",
-                style: TextStyle(
-                  fontFamily: "poppins",
-                  fontWeight: FontWeight.bold,
-                  fontSize: 23,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 81, 81, 81),
-            borderRadius: BorderRadius.circular(30),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                spreadRadius: 1,
-                blurRadius: 1,
-                offset: Offset(1, 1),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          // width: MediaQuery.of(context).size.width * .9,
-          height: MediaQuery.of(context).size.height * .08,
-          margin: EdgeInsets.all(10),
-          child: Center(
-            child: Text(
-              "Paracetamol",
-              style: TextStyle(
-                fontFamily: "poppins",
-                fontWeight: FontWeight.bold,
-                fontSize: 23,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 81, 81, 81),
-            borderRadius: BorderRadius.circular(30),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                spreadRadius: 1,
-                blurRadius: 1,
-                offset: Offset(1, 1),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(
-            height: MediaQuery.of(context).size.height * .1,
-            width: MediaQuery.of(context).size.width * .9,
+    return Padding(
+      padding: EdgeInsets.all(10),
+      child: ListView(
+        children: [
+          SizedBox(
+            height: 60,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Go back",
+                  "All Notifications",
                   style: TextStyle(
-                    color: Color.fromARGB(182, 27, 26, 26),
+                    color: Colors.blueGrey,
                     fontFamily: "poppins",
-                    fontSize: 30,
+                    fontSize: 32,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .21,
-                ),
-                FlatButton(
+                IconButton(
                   onPressed: () {
-                    print("hii");
-                    Navigator.pushNamed(context, '/orders');
+                    print("icon button pressed");
+                    showWidget();
                   },
-                  onLongPress: () {
-                    print("long press");
+                  splashRadius: 23,
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
+                    color: Colors.blueGrey,
+                    size: 35,
+                  ),
+                  padding:
+                      EdgeInsets.only(top: 10, right: 10, left: 7, bottom: 15),
+                ),
+                IconButton(
+                  onPressed: () {
+                    print("icon button pressed");
+                    hideWidget();
                   },
-                  child: Icon(Icons.keyboard_arrow_left_rounded),
-                  textColor: Colors.white,
-                  color: Color.fromARGB(182, 27, 26, 26),
-                  splashColor: Color.fromARGB(208, 0, 0, 0),
-                  highlightColor: Colors.black38,
-                  disabledTextColor: Colors.blueGrey,
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(25),
+                  splashRadius: 23,
+                  icon: Icon(
+                    Icons.keyboard_arrow_up,
+                    color: Colors.blueGrey,
+                    size: 35,
+                  ),
+                  padding:
+                      EdgeInsets.only(top: 10, right: 10, left: 7, bottom: 15),
                 ),
               ],
-            )),
-      ],
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          FutureBuilder<List>(
+              future: weight.getMedWeight(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemCount: snapshot.data?.length,
+                      itemBuilder: (context, i) {
+                        wt = int.parse(snapshot.data![i]['medicine_weight']);
+                        if (wt! <= 30) {
+                          return SizedBox(
+                            child: Visibility(
+                              maintainSize: true,
+                              maintainAnimation: true,
+                              maintainState: true,
+                              visible: viewVisible,
+                              child: ListTile(
+                                shape: RoundedRectangleBorder(
+                                  side:
+                                      BorderSide(color: Color.fromARGB(255, 17, 16, 20), width: 1),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                tileColor: Color.fromARGB(255, 4, 17, 38),
+                                leading: CircleAvatar(
+                                  backgroundColor: Colors.amber,
+                                  child: Icon(
+                                    Icons.error,
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                                title: Text(
+                                  "Paracetamol Quantity has reached minimum stock!",
+                                  style: TextStyle(
+                                    color: Colors.blueGrey,
+                                    fontFamily: "poppins",
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  "Order Now",
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                    fontFamily: "poppins",
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w200,
+                                  ),
+                                ),
+                                trailing: IconButton(
+                                  icon: Icon(Icons.delete,
+                                      color: Colors.redAccent),
+                                  onPressed: () {},
+                                ),
+                              ),
+                            ),
+                          );
+                        } else {
+                          return Text(
+                            "No Notifications for now come back later",
+                            style: TextStyle(
+                              color: Colors.blueGrey,
+                              fontFamily: "poppins",
+                              fontSize: 32,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          );
+                        }
+                      });
+                } else {
+                  return const Center(
+                    child: Text("No data available"),
+                  );
+                }
+              }),
+        ],
+      ),
     );
   }
 }

@@ -30,13 +30,13 @@ class OrderCardWidgetState extends State {
       maintainState: true,
       visible: viewVisible,
       child: Container(
-        height: MediaQuery.of(context).size.height * .21,
+        height: MediaQuery.of(context).size.height * .2,
         width: MediaQuery.of(context).size.width,
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
-          color: Color.fromARGB(255, 8, 33, 75),
+          color: Color.fromARGB(255, 4, 17, 38),
           elevation: 6,
           child: Padding(
             padding: const EdgeInsets.all(13.0),
@@ -48,18 +48,18 @@ class OrderCardWidgetState extends State {
                   "Paracetamol",
                   style: TextStyle(
                     fontFamily: "poppins",
-                    fontSize: 22,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blueGrey,
+                    color: Colors.green,
                   ),
                 ),
                 Text(
                   "Paracetamol quantity is low, Do you want to order now? ",
                   style: TextStyle(
                     fontFamily: "poppins",
-                    fontSize: 18,
+                    fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: Colors.redAccent,
+                    color: Colors.blueGrey,
                   ),
                 ),
                 SizedBox(
@@ -136,13 +136,7 @@ class OrderCardWidgetState extends State {
                       onLongPress: () {
                         print("long press");
                       },
-                      child: Text(
-                        "ok",
-                        style: TextStyle(
-                            color: Colors.white70,
-                            fontFamily: "poppins",
-                            fontSize: 20),
-                      ),
+                      child: Icon(Icons.done, color: Colors.green, size: 20),
                       textColor: Colors.blueGrey,
                       color: Color.fromARGB(255, 24, 48, 90),
                       splashColor: Color.fromARGB(87, 18, 18, 18),
@@ -150,35 +144,34 @@ class OrderCardWidgetState extends State {
                       disabledColor: Colors.blue,
                       disabledTextColor: Colors.blueGrey,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
+                        borderRadius: BorderRadius.circular(12.0),
                       ),
                       padding: EdgeInsets.only(
-                          left: 35, right: 35, top: 12, bottom: 12),
+                          left: 30, right: 30, top: 10, bottom: 10),
                     ),
                     SizedBox(
-                      width: 140,
+                      width: 170,
                     ),
-                    Material(
-                      borderRadius: BorderRadius.circular(110),
-                      color: Color.fromARGB(255, 6, 23, 52),
-                      child: IconButton(
-                        onPressed: () {
-                          print("icon button pressed");
-                          hideWidget();
-                        },
-                        splashRadius: 19,
-                        splashColor:
-                            Color.fromARGB(245, 224, 84, 71).withOpacity(0.4),
-                        highlightColor: Color.fromARGB(210, 234, 100, 100),
-                        icon: Icon(
-                          Icons.cancel_presentation_outlined,
-                          size: 50,
-                          // color: Colors.indigoAccent,
-                          color: Colors.green,
-                        ),
-                        padding: EdgeInsets.only(),
-                        // alignment: Alignment.center,
+                    RaisedButton(
+                      focusElevation: 4,
+                      onPressed: () {
+                        // print("hii");
+                      },
+                      onLongPress: () {
+                        print("long press");
+                      },
+                      child: Icon(Icons.delete, color: Colors.red, size: 20),
+                      textColor: Colors.blueGrey,
+                      color: Color.fromARGB(255, 24, 48, 90),
+                      splashColor: Color.fromARGB(87, 18, 18, 18),
+                      highlightColor: Colors.black38,
+                      disabledColor: Colors.blue,
+                      disabledTextColor: Colors.blueGrey,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0),
                       ),
+                      padding: EdgeInsets.only(
+                          left: 30, right: 30, top: 10, bottom: 10),
                     ),
                   ],
                 )
@@ -292,7 +285,9 @@ openIconSnackBar(context, String text) {
         SizedBox(
           width: 5,
         ),
-       Text(text,style: TextStyle(color:Colors.green[900],fontFamily:"poppins",fontSize: 20))
+        Text(text,
+            style: TextStyle(
+                color: Colors.green[900], fontFamily: "poppins", fontSize: 20))
       ],
     ),
     duration: const Duration(milliseconds: 2500),
@@ -314,13 +309,20 @@ openErrorSnackBar(context, String text) {
   //)
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     backgroundColor: Colors.red,
-    content:  Row(
+    content: Row(
       children: [
-        Icon(Icons.error_rounded,color:Colors.red[900],),
+        Icon(
+          Icons.error_rounded,
+          color: Colors.red[900],
+        ),
         SizedBox(
           width: 5,
         ),
-        Text(text,style: TextStyle(color: Color.fromARGB(255, 137, 5, 5),fontFamily:"poppins",fontSize: 20)),
+        Text(text,
+            style: TextStyle(
+                color: Color.fromARGB(255, 137, 5, 5),
+                fontFamily: "poppins",
+                fontSize: 20)),
       ],
     ),
     duration: Duration(milliseconds: 2500),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medpharma_app/widgets/notificationWidget.dart';
 import './widgets/orderWidget.dart';
 import './widgets/drawerCardWidget.dart';
 import 'widgets/homeScreen.dart';
@@ -46,6 +47,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
   static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     OrderScreen(),
+    NotificationScreen(),
     ProfileScreen(),
   ];
 
@@ -240,6 +242,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             ],
           )),
       bottomNavigationBar: BottomNavigationBar(
+         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -250,6 +253,12 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
               Icons.shopping_bag,
             ),
             label: "Orders",
+          ),
+            BottomNavigationBarItem(
+            icon: Icon(
+              Icons.notification_important,
+            ),
+            label: "Notifications",
           ),
           BottomNavigationBarItem(
             icon: Icon(

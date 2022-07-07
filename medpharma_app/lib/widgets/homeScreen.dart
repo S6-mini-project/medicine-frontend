@@ -85,7 +85,7 @@ class SearchInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          const EdgeInsets.only(top: 8.0, left: 25.0, right: 25.0, bottom: 8.0),
+          const EdgeInsets.only(top: 8.0, left: 20.0, right: 20.0, bottom: 8.0),
       child: Container(
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(
@@ -95,22 +95,23 @@ class SearchInput extends StatelessWidget {
               color: Colors.grey.withOpacity(.1)),
         ]),
         child: TextField(
+          style: TextStyle(color: Colors.teal[700],fontFamily: "poppins"),
           onChanged: (value) {
             //Do something wi
           },
           decoration: const InputDecoration(
-            prefixIcon: Icon(Icons.search),
+            prefixIcon: Icon(Icons.search,color:Colors.blueGrey),
             filled: true,
-            fillColor: Colors.black12,
+            fillColor:  Color.fromARGB(255, 4, 17, 38),
             hintText: 'Search',
-            hintStyle: TextStyle(color: Colors.grey),
+            hintStyle: TextStyle(color: Color.fromARGB(255, 6, 118, 105)),
             contentPadding:
                 EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(15.0)),
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color.fromARGB(255, 0, 17, 45), width: 1.0),
+              borderSide: BorderSide(color:Color.fromARGB(255, 17, 16, 20), width: 1.0),
               borderRadius: BorderRadius.all(Radius.circular(15.0)),
             ),
             focusedBorder: OutlineInputBorder(
