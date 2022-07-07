@@ -36,7 +36,8 @@ class _StockStatusWidgetState extends State<StockStatusWidget> {
                   itemBuilder: (context, i) {
                     wt = int.parse(snapshot.data![i]['medicine_weight']);
                     if (wt! <= 30) {
-                        Provider.of<NotificationService>(context, listen: false).instantNofitication();
+                      Provider.of<NotificationService>(context, listen: false)
+                          .instantNofitication();
                     }
                     // if( (int.parse(snapshot.data![i]['medicine_weight'] < 30)== true)){
 
@@ -102,72 +103,42 @@ class _StockStatusWidgetState extends State<StockStatusWidget> {
                     );
                   });
             } else {
+              // openWarningSnackBar(context, "Not connected to the internet");
               return const Center(
-                child: Text("No data available"),
+                child: Text("No data available",
+                    style: TextStyle(
+                        color: Colors.blueGrey,
+                        fontFamily: "poppins",
+                        fontSize: 15)),
               );
             }
           }),
     );
   }
 }
-// class StockStatusWidget extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: MediaQuery.of(context).size.height * .18,
-//       width: MediaQuery.of(context).size.width,
-//       margin: EdgeInsets.all(7),
-//          decoration: BoxDecoration(
-//             borderRadius: BorderRadius.circular(15),
-//             gradient: const LinearGradient(colors: [
-//               Color.fromARGB(255,175, 182, 187),
-//               Color.fromARGB(255,91, 105, 119),
-//             ])),
-//         child: Padding(
-//           padding: const EdgeInsets.all(13.0),
-//           child: Row(
-//             children: [
-//               Column(
-//                 crossAxisAlignment: CrossAxisAlignment.center,
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: [
-//                   Text(
-//                     "Paracetamol",
-//                     style: TextStyle(
-//                       fontFamily: "poppins",
-//                       fontSize: 22,
-//                       color: Colors.white,
-//                       fontWeight: FontWeight.bold,
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//               SizedBox(
-//                 width: 90,
-//               ),
-             
-//                 Align(
-//                   alignment: Alignment.centerRight,
-//                   child: CircularPercentIndicator(
-//                     progressColor: Colors.orangeAccent,
-//                     radius: 60.0,
-//                     lineWidth: 13.0,
-//                     animation: true,
-//                     percent: 0.5,
-//                     center: new Text(
-//                       "50.0%",
-//                       style: new TextStyle(
-//                         fontWeight: FontWeight.bold,
-//                         fontSize: 20.0,
-//                         color: Colors.white,
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//             ],
-//               ),
-//           ),
-      
-//       );
-//   }
-// }
+
+openWarningSnackBar(context, String text ) {
+  // This should be called by an on pressed function
+  // Example:
+  // Button(
+  //  onTap: (){
+  //    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //   backgroundColor: Colors.blue,
+  //   content: Text("Your Text"),
+  //   duration: Duration(milliseconds: 1500),
+  // ));
+  // }
+  //)
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    backgroundColor: Colors.yellow,
+    content: Row(
+      children: [
+        Icon(Icons.warning,color: Colors.black,),
+        SizedBox(width: 5,),
+        Text(text,style: TextStyle(fontSize: 16,color: Colors.black),),
+        
+      ],
+    ),
+    duration: Duration(milliseconds: 12500),
+  ));
+}

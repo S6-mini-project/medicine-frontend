@@ -111,7 +111,11 @@ class OrderWidgetState extends State {
                       });
                 } else {
                   return const Center(
-                    child: Text("No data available"),
+                    child: Text("No data available",
+                        style: TextStyle(
+                            color: Colors.blueGrey,
+                            fontFamily: "poppins",
+                            fontSize: 15)),
                   );
                 }
               }),

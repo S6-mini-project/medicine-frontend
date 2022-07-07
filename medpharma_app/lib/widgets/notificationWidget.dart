@@ -94,8 +94,9 @@ class NotificationWidgetState extends State {
                               visible: viewVisible,
                               child: ListTile(
                                 shape: RoundedRectangleBorder(
-                                  side:
-                                      BorderSide(color: Color.fromARGB(255, 17, 16, 20), width: 1),
+                                  side: BorderSide(
+                                      color: Color.fromARGB(255, 17, 16, 20),
+                                      width: 1),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 tileColor: Color.fromARGB(255, 4, 17, 38),
@@ -146,7 +147,13 @@ class NotificationWidgetState extends State {
                       });
                 } else {
                   return const Center(
-                    child: Text("No data available"),
+                    child: Text(
+                      "No data available",
+                      style: TextStyle(
+                          color: Colors.blueGrey,
+                          fontFamily: "poppins",
+                          fontSize: 15),
+                    ),
                   );
                 }
               }),
