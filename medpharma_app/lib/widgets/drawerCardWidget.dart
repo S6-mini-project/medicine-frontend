@@ -39,7 +39,7 @@ class _DrawerCardState extends State<DrawerCardWidget> {
       leading: CircleAvatar(
         backgroundColor: Colors.blueGrey,
         radius: 42,
-        child: Icon(Icons.person_outline, color: Colors.white, size: 45),
+        child: Icon(Icons.person_outline, color: Colors.blue, size: 45),
       ),
       title: Text(user_name,
           style: TextStyle(
@@ -53,7 +53,7 @@ class _DrawerCardState extends State<DrawerCardWidget> {
         style: TextStyle(
           color: Colors.blueAccent,
           fontFamily: "poppins",
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w400,
         ),
       ),
       contentPadding: EdgeInsets.all(2),

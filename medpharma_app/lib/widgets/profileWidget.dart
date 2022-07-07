@@ -338,7 +338,7 @@ String Name=' ';
                   style: TextStyle(
                     color: Colors.blueAccent,
                       fontFamily: "poppins",
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       fontSize: 15),
                 ),
         ],
