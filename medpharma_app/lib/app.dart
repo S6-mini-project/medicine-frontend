@@ -21,9 +21,9 @@ class App extends StatelessWidget {
             //   // When navigating to the "/" route, build the FirstScreen widget.
             '/login': (context) => LoginWidget(),
             '/home': (context) => MyNavigationBar(),
-            '/users': (context) => MyNavigationBar(),
+            '/users': (context) => ProfileScreen(),
             '/notifications': (context) => NotificationScreen(),
-            '/orders': (context) => MyNavigationBar() //routes
+            '/orders': (context) => OrderScreen() //routes
             //   // When navigating to the "/second" route, build the SecondScreen widget.
             //   '/orders': (context) => OrderScreen(),  //routes
           },
@@ -164,7 +164,8 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                 ),
                 onTap: () {
                   print("User pressed");
-                  Navigator.pushNamed(context, '/users');
+                  Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ProfileScreen()));
                 },
                 hoverColor: Colors.black38,
                 leading: Icon(
@@ -191,7 +192,8 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                 ),
                 onTap: () {
                   print("stocks pressed");
-                  Navigator.pushNamed(context, '/orders');
+                 Navigator.push(context,
+              MaterialPageRoute(builder: (context) => OrderScreen()));
                 },
                 hoverColor: Colors.black38,
                 leading: Icon(

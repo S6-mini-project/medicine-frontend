@@ -5,10 +5,11 @@ import 'package:medpharma_app/widgets/orderScreen.dart';
 class NotificationService extends ChangeNotifier {
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
-
+      
   // //initilize
   // gotoOrders()  async{
-  //        Navigator.pushNamed(context, '/home');  //todo
+  //        Navigator.push(context,
+  //             MaterialPageRoute(builder: (context) =>OrderScreen())); //todo
   // }
   Future initialize() async {
     FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =

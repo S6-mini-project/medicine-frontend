@@ -23,6 +23,7 @@ class OrderCardWidgetState extends State {
 
   @override
   Widget build(BuildContext context) {
+    final priceConroller = TextEditingController();
     return Visibility(
       maintainSize: true,
       maintainAnimation: true,
@@ -71,17 +72,17 @@ class OrderCardWidgetState extends State {
                       onPressed: () {
                         // print("hii");
                         showDialog(
-                          barrierColor: Colors.white24,
+                          barrierColor: Color.fromARGB(158, 28, 26, 46),
                           context: context,
                           builder: (ctx) => AlertDialog(
-                            backgroundColor: Color.fromARGB(255, 234, 251, 251),
+                            backgroundColor: Color.fromARGB(255, 19, 24, 50),
                             title: Text(
                               "Confirm your Order",
                               style: TextStyle(
                                 fontFamily: "poppins",
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 15, 3, 82),
+                                color: Colors.blueGrey,
                                 // decoration: TextDecoration.underline,
                                 // decorationThickness: 2,
                                 // decorationStyle: TextDecorationStyle.dotted,
@@ -89,35 +90,31 @@ class OrderCardWidgetState extends State {
                                     Color.fromARGB(186, 245, 73, 73),
                               ),
                             ),
-                            content: Container(
-                              padding: const EdgeInsets.all(25.0),
-                              child: Text(
-                                "Quantity: 100nos.\n\n"
-                                        "Price" +
-                                    "          " +
-                                    ":" +
-                                    "1000Rs ",
-                                style: TextStyle(
-                                  fontFamily: "poppins",
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w900,
-                                  color: Color.fromARGB(255, 8, 28, 201),
-                                ),
+                            content: SizedBox(
+                              height: 100,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  EmailInputFb1(
+                                      inputController: priceConroller),
+                                  // EmailInputFb1(inputController: priceConroller)
+                                ],
                               ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Color.fromARGB(255, 20, 20, 130)),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
                             ),
                             actions: <Widget>[
                               FlatButton(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderRadius: BorderRadius.circular(17.0),
                                 ),
                                 height: 30,
                                 minWidth: 60,
                                 onPressed: () {
+                                  String price = priceConroller.text;
+                                  if (!price.isEmpty) {
+                                    openIconSnackBar(context, "success!");
+                                  } else {
+                                    openErrorSnackBar(context, "error");
+                                  }
                                   Navigator.of(ctx).pop();
                                 },
                                 color: Colors.green,
@@ -153,7 +150,7 @@ class OrderCardWidgetState extends State {
                       disabledColor: Colors.blue,
                       disabledTextColor: Colors.blueGrey,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
+                        borderRadius: BorderRadius.circular(16.0),
                       ),
                       padding: EdgeInsets.only(
                           left: 35, right: 35, top: 12, bottom: 12),
@@ -192,4 +189,140 @@ class OrderCardWidgetState extends State {
       ),
     );
   }
+}
+
+class EmailInputFb1 extends StatelessWidget {
+  final TextEditingController inputController;
+  const EmailInputFb1({Key? key, required this.inputController})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const primaryColor = Color(0xff4338CA);
+    const secondaryColor = Color(0xff6D28D9);
+    const accentColor = Color(0xffffffff);
+    const backgroundColor = Color.fromARGB(255, 15, 36, 103);
+    const errorColor = Color(0xffEF4444);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Enter Quantity of Medicine needed",
+          style: TextStyle(
+              fontSize: 14,
+              fontFamily: "poppins",
+              fontWeight: FontWeight.normal,
+              color: Colors.blueGrey.withOpacity(.9)),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Container(
+          height: 50,
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+                offset: const Offset(12, 26),
+                blurRadius: 50,
+                spreadRadius: 0,
+                color: Colors.grey.withOpacity(.1)),
+          ]),
+          child: TextField(
+            controller: inputController,
+            onChanged: (value) {
+              //Do something wi
+            },
+            // keyboardType: TextInputType.emailAddress,
+            style: const TextStyle(
+                fontSize: 17, color: Color.fromARGB(255, 11, 155, 114)),
+            decoration: InputDecoration(
+              prefixIcon: Icon(Icons.format_list_numbered),
+              filled: true,
+              fillColor: Color.fromARGB(255, 37, 45, 63),
+              hintText: 'Enter the Quantity',
+              hintStyle: TextStyle(
+                  color: Colors.blueGrey.withOpacity(.75),
+                  fontFamily: "poppins"),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
+              border: const OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: Color.fromARGB(255, 37, 45, 63), width: 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.lime, width: 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              ),
+              errorBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: errorColor, width: 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              ),
+              enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: Color.fromARGB(255, 37, 45, 63), width: 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+//snackbar for success
+openIconSnackBar(context, String text) {
+  // This should be called by an on pressed/tap function
+  // Example:
+  // Button(
+  //  onTap: (){
+  //    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //   backgroundColor: Colors.blue,
+  //   content: Text("Your Text"),
+  //   duration: Duration(milliseconds: 1500),
+  // ));
+  // }
+  //)
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    backgroundColor: Colors.green,
+    content: Row(
+      children: [
+        Icon(Icons.done_all_rounded),
+        SizedBox(
+          width: 5,
+        ),
+       Text(text,style: TextStyle(color:Colors.green[900],fontFamily:"poppins",fontSize: 20))
+      ],
+    ),
+    duration: const Duration(milliseconds: 2500),
+  ));
+}
+
+//snackbar error message
+openErrorSnackBar(context, String text) {
+  // This should be called by an on pressed function
+  // Example:
+  // Button(
+  //  onTap: (){
+  //    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //   backgroundColor: Colors.blue,
+  //   content: Text("Your Text"),
+  //   duration: Duration(milliseconds: 1500),
+  // ));
+  // }
+  //)
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    backgroundColor: Colors.red,
+    content:  Row(
+      children: [
+        Icon(Icons.error_rounded,color:Colors.red[900],),
+        SizedBox(
+          width: 5,
+        ),
+        Text(text,style: TextStyle(color: Color.fromARGB(255, 137, 5, 5),fontFamily:"poppins",fontSize: 20)),
+      ],
+    ),
+    duration: Duration(milliseconds: 2500),
+  ));
 }

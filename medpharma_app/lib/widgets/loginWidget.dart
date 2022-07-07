@@ -15,11 +15,11 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   final emailController = TextEditingController();
   final passController = TextEditingController();
-   
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 24, 31, 46),
       body: ListView(
         padding: EdgeInsets.all(50),
         children: [
@@ -33,6 +33,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
               // child: UsernameWidget(),
               child: TextField(
+                style: TextStyle(color: Colors.teal[700]),
                 controller: emailController,
                 keyboardType: TextInputType.multiline,
                 // onChanged: (String value) {
@@ -44,11 +45,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                 decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
                     borderSide:
-                        BorderSide(color: Color.fromARGB(112, 146, 146, 146)),
+                        BorderSide(color: Color.fromARGB(255, 37, 45, 63)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color.fromARGB(185, 200, 196, 196),
+                      color: Color.fromARGB(255, 37, 45, 63),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(10),
@@ -56,7 +57,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   hintText: "Email",
                   errorText: ueCheck ? null : 'Email cannot be empty',
                   hintStyle: TextStyle(
-                    color: Color.fromARGB(141, 131, 127, 127),
+                    color: Color.fromARGB(255, 53, 66, 94),
                     fontFamily: "Poppins",
                     fontSize: 18,
                   ),
@@ -71,6 +72,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           SizedBox(
             // child: PassWidget(),
             child: TextField(
+              style: TextStyle(color: Colors.teal[700]),
               controller: passController,
               keyboardType: TextInputType.multiline,
               onChanged: (String value) {
@@ -82,10 +84,10 @@ class _LoginWidgetState extends State<LoginWidget> {
               decoration: InputDecoration(
                 enabledBorder: UnderlineInputBorder(
                     borderSide:
-                        BorderSide(color: Color.fromARGB(112, 146, 146, 146))),
+                        BorderSide(color: Color.fromARGB(255, 37, 45, 63))),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: Color.fromARGB(185, 200, 196, 196),
+                    color: Color.fromARGB(255, 37, 45, 63),
                     width: 2,
                   ),
                   borderRadius: BorderRadius.circular(10),
@@ -94,7 +96,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 errorText: passCheck ? null : 'Password cannot be empty',
                 hintStyle: TextStyle(
                   fontFamily: "Poppins",
-                  color: Color.fromARGB(141, 131, 127, 127),
+                  color: Color.fromARGB(255, 53, 66, 94),
                   fontSize: 18,
                 ),
               ),
@@ -110,7 +112,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   Text(
                     "Sign in",
                     style: TextStyle(
-                      color: Color.fromARGB(182, 27, 26, 26),
+                      color: Color.fromARGB(255, 53, 66, 94),
                       fontFamily: "Poppins",
                       fontSize: 40,
                       fontWeight: FontWeight.w600,
@@ -122,14 +124,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                   FlatButton(
                     onPressed: () {
                       print("hii");
-                        _validateLogin();
+                      _validateLogin();
                     },
                     onLongPress: () {
                       print("long press");
                     },
                     child: Icon(Icons.keyboard_arrow_right_rounded),
-                    textColor: Colors.white,
-                    color: Color.fromARGB(182, 27, 26, 26),
+                    textColor: Colors.blueGrey,
+                    color: Color.fromARGB(255, 53, 66, 94),
                     splashColor: Color.fromARGB(208, 0, 0, 0),
                     highlightColor: Colors.black38,
                     disabledTextColor: Colors.blueGrey,
@@ -146,7 +148,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 "Dont have an account?",
                 style: TextStyle(
                   fontFamily: "poppins",
-                  color: Color.fromARGB(182, 27, 26, 26),
+                  color: Color.fromARGB(255, 53, 66, 94),
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -154,7 +156,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 onPressed: () {
                   print("sign up pressed");
                 },
-                color: Color.fromARGB(255, 228, 222, 222),
+                color: Color.fromARGB(255, 37, 45, 63),
                 splashColor: Color.fromARGB(208, 0, 0, 0),
                 highlightColor: Color.fromARGB(96, 108, 105, 105),
                 padding: EdgeInsets.all(10),
@@ -163,7 +165,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   "Sign up",
                   style: TextStyle(
                     fontFamily: "poppins",
-                    color: Color.fromARGB(182, 27, 26, 26),
+                    color: Color.fromARGB(255, 56, 69, 97),
                     fontWeight: FontWeight.w600,
                     decoration: TextDecoration.underline,
                   ),
@@ -198,9 +200,8 @@ class _LoginWidgetState extends State<LoginWidget> {
           print('Authenticated');
           print(refresh_token);
           print(access_token);
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => MyNavigationBar()));
-
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => MyNavigationBar()));
         }
       });
     }
