@@ -8,7 +8,7 @@ import '../widgets/loginWidget.dart';
 String access_token = '';
 String refresh_token = '';
 String rf = '';
-
+String api='http://192.168.18.178:5000';
 class AuthUser {
   final String access_token;
   final String refresh_token;

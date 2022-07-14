@@ -9,7 +9,8 @@ class NotificationWidget extends StatefulWidget {
 class NotificationWidgetState extends State {
   Medweight weight = Medweight();
   bool viewVisible = true;
-  int? wt;
+  double? wt;
+  double? mwt;
   void showWidget() {
     setState(() {
       viewVisible = true;
@@ -84,8 +85,9 @@ class NotificationWidgetState extends State {
                       shrinkWrap: true,
                       itemCount: snapshot.data?.length,
                       itemBuilder: (context, i) {
-                        wt = int.parse(snapshot.data![i]['medicine_weight']);
-                        if (wt! <= 30) {
+                        wt = double.parse(snapshot.data![i]['medicine_weight']);
+                        mwt = double.parse(snapshot.data![i]['minimum_stock']);
+                        if (wt! <= mwt!) {
                           return SizedBox(
                             child: Visibility(
                               maintainSize: true,
@@ -108,7 +110,7 @@ class NotificationWidgetState extends State {
                                   ),
                                 ),
                                 title: Text(
-                                  "Paracetamol Quantity has reached minimum stock!",
+                                  snapshot.data![i]['medicine_name'].toString()+" Quantity has reached minimum stock!",
                                   style: TextStyle(
                                     color: Colors.blueGrey,
                                     fontFamily: "poppins",
@@ -139,7 +141,7 @@ class NotificationWidgetState extends State {
                             style: TextStyle(
                               color: Colors.blueGrey,
                               fontFamily: "poppins",
-                              fontSize: 32,
+                              fontSize: 24,
                               fontWeight: FontWeight.w600,
                             ),
                           );

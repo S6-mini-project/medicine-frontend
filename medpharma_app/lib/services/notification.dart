@@ -32,7 +32,7 @@ class NotificationService extends ChangeNotifier {
   }
 
   //Instant Notifications
-  Future instantNofitication() async {
+  Future instantNofitication(String med_name) async {
     var android = AndroidNotificationDetails("id", "channel",
         color: Color.fromARGB(255, 34, 71, 255),
         priority: Priority.high,
@@ -44,7 +44,7 @@ class NotificationService extends ChangeNotifier {
 
     await _flutterLocalNotificationsPlugin.show(
         0,
-        "User your Paracetamol has reached minimum stock!",
+        "User your "+med_name+" has reached minimum stock!",
         "Tap to  order now!",
         platform,
         payload: "Welcome to demo app");

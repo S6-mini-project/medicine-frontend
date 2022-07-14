@@ -14,7 +14,8 @@ class StockStatusWidget extends StatefulWidget {
 
 class _StockStatusWidgetState extends State<StockStatusWidget> {
   Medweight weight = Medweight();
-  int? wt;
+  double? wt;
+  double? mwt;
   NotificationService notification = NotificationService();
   @override
   void initState() {
@@ -34,10 +35,12 @@ class _StockStatusWidgetState extends State<StockStatusWidget> {
                   shrinkWrap: true,
                   itemCount: snapshot.data?.length,
                   itemBuilder: (context, i) {
-                    wt = int.parse(snapshot.data![i]['medicine_weight']);
-                    if (wt! <= 30) {
+                    wt = double.parse(snapshot.data![i]['medicine_weight']);
+                    mwt = double.parse(snapshot.data![i]['minimum_stock']);
+                    String med_name= snapshot.data![i]['medicine_name'].toString();
+                    if (wt! <= mwt!) {
                       Provider.of<NotificationService>(context, listen: false)
-                          .instantNofitication();
+                          .instantNofitication(med_name);
                     }
                     // if( (int.parse(snapshot.data![i]['medicine_weight'] < 30)== true)){
 
@@ -63,7 +66,7 @@ class _StockStatusWidgetState extends State<StockStatusWidget> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Paracetamol",
+                                  snapshot.data![i]['medicine_name'].toString(),
                                   style: TextStyle(
                                     fontFamily: "poppins",
                                     fontSize: 22,
@@ -74,7 +77,7 @@ class _StockStatusWidgetState extends State<StockStatusWidget> {
                               ],
                             ),
                             SizedBox(
-                              width: 90,
+                              width: 60,
                             ),
                             Align(
                               alignment: Alignment.centerRight,

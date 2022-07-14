@@ -11,7 +11,7 @@ class OrderWidget extends StatefulWidget {
 class OrderWidgetState extends State {
   Medweight weight = Medweight();
   bool viewVisible = true;
-  int? wt;
+  double? wt;
   void showWidget() {
     setState(() {
       viewVisible = true;
@@ -86,7 +86,8 @@ class OrderWidgetState extends State {
                       shrinkWrap: true,
                       itemCount: snapshot.data?.length,
                       itemBuilder: (context, i) {
-                        wt = int.parse(snapshot.data![i]['medicine_weight']);
+                        wt = double.parse(snapshot.data![i]['medicine_weight']);
+                        String med_name = snapshot.data![i]['medicine_name'].toString();
                         if (wt! <= 30) {
                           return SizedBox(
                             child: Visibility(
@@ -94,7 +95,7 @@ class OrderWidgetState extends State {
                               maintainAnimation: true,
                               maintainState: true,
                               visible: viewVisible,
-                              child: OrderCardWidget(),
+                              child: OrderCardWidget(medicineName: med_name),
                             ),
                           );
                         } else {
@@ -124,3 +125,4 @@ class OrderWidgetState extends State {
     );
   }
 }
+
