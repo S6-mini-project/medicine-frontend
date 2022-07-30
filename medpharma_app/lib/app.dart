@@ -10,6 +10,7 @@ import './widgets/notificationScreen.dart';
 import 'package:provider/provider.dart';
 import './services/notification.dart';
 import './api/login.dart';
+import './widgets/signupWidget.dart';
 
 class App extends StatelessWidget {
   @override
@@ -24,7 +25,8 @@ class App extends StatelessWidget {
             '/home': (context) => MyNavigationBar(),
             '/users': (context) => ProfileScreen(),
             '/notifications': (context) => NotificationScreen(),
-            '/orders': (context) => OrderScreen() //routes
+            '/orders': (context) => OrderScreen(),
+            '/signup':(context) => SignupWidget() //routes
             //   // When navigating to the "/second" route, build the SecondScreen widget.
             //   '/orders': (context) => OrderScreen(),  //routes
           },

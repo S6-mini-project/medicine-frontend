@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Medweight{
+  // String getMedUrl = "http://192.168.38.252:5000/api/medicine";
   String getMedUrl = "http://192.168.18.178:5000/api/medicine";
   Future<List> getMedWeight() async {
     try {

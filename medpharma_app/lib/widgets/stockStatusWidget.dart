@@ -47,60 +47,65 @@ class _StockStatusWidgetState extends State<StockStatusWidget> {
                     //           Provider.of<NotificationService>(context, listen: false).instantNofitication();
 
                     // }
-                    return Container(
-                      height: MediaQuery.of(context).size.height * .18,
-                      width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.all(7),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          gradient: const LinearGradient(colors: [
-                            Color.fromARGB(255, 65, 156, 220),
-                            Color.fromARGB(255, 18, 42, 65),
-                          ])),
-                      child: Padding(
-                        padding: const EdgeInsets.all(13.0),
-                        child: Row(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  snapshot.data![i]['medicine_name'].toString(),
-                                  style: TextStyle(
-                                    fontFamily: "poppins",
-                                    fontSize: 22,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                    return Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * .18,
+                        // width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.all(7),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            gradient: const LinearGradient(colors: [
+                              // Color.fromARGB(255, 65, 156, 220),
+                              Color.fromARGB(255, 12, 48, 82),
+                              Color.fromARGB(255, 5, 19, 44),
+                            ])),
+                        child: Padding(
+                          padding: const EdgeInsets.all(13.0),
+                          child: Row(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    snapshot.data![i]['medicine_name'].toString(),
+                                    style: TextStyle(
+                                      fontFamily: "poppins",
+                                      fontSize: 22,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 60,
-                            ),
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: CircularPercentIndicator(
-                                progressColor: Color.fromARGB(255, 54, 207, 77),
-                                radius: 60.0,
-                                lineWidth: 13.0,
-                                animation: true,
-                                percent: 0.5,
-                                center: new Text(
-                                  // "50.0%",
-                                  snapshot.data![i]['medicine_weight'] +
-                                      " " +
-                                      "mg",
-                                  style: new TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20.0,
-                                    color: Colors.white,
+                                ],
+                              ),
+                              SizedBox(
+                                width: 50,
+                              ),
+                              Align(
+                                alignment: Alignment.center,
+                                child: CircularPercentIndicator(
+                                  progressColor: Color.fromARGB(255, 54, 207, 77),
+                                  radius: 60.0,
+                                  lineWidth: 13.0,
+                                  animation: true,
+                                  percent: 0.5,
+                                  center: new Text(
+                                    // "50.0%",
+                                    snapshot.data![i]['medicine_weight'] +
+                                        " " +
+                                        "mg",
+                                    style: new TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20.0,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     );

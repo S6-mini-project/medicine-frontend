@@ -94,43 +94,47 @@ class NotificationWidgetState extends State {
                               maintainAnimation: true,
                               maintainState: true,
                               visible: viewVisible,
-                              child: ListTile(
-                                shape: RoundedRectangleBorder(
-                                  side: BorderSide(
-                                      color: Color.fromARGB(255, 17, 16, 20),
-                                      width: 1),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                tileColor: Color.fromARGB(255, 4, 17, 38),
-                                leading: CircleAvatar(
-                                  backgroundColor: Colors.amber,
-                                  child: Icon(
-                                    Icons.error,
-                                    color: Colors.blue,
+                              child: Flexible(
+                                flex:1,
+                                fit: FlexFit.tight,
+                                child: ListTile(
+                                  shape: RoundedRectangleBorder(
+                                    side: BorderSide(
+                                        color: Color.fromARGB(255, 17, 16, 20),
+                                        width: 1),
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                ),
-                                title: Text(
-                                  snapshot.data![i]['medicine_name'].toString()+" Quantity has reached minimum stock!",
-                                  style: TextStyle(
-                                    color: Colors.blueGrey,
-                                    fontFamily: "poppins",
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
+                                  tileColor: Color.fromARGB(255, 4, 17, 38),
+                                  leading: CircleAvatar(
+                                    backgroundColor: Colors.amber,
+                                    child: Icon(
+                                      Icons.error,
+                                      color: Colors.blue,
+                                    ),
                                   ),
-                                ),
-                                subtitle: Text(
-                                  "Order Now",
-                                  style: TextStyle(
-                                    color: Colors.green,
-                                    fontFamily: "poppins",
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w200,
+                                  title: Text(
+                                    snapshot.data![i]['medicine_name'].toString()+" Quantity has reached minimum stock!",
+                                    style: TextStyle(
+                                      color: Colors.blueGrey,
+                                      fontFamily: "poppins",
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
-                                ),
-                                trailing: IconButton(
-                                  icon: Icon(Icons.delete,
-                                      color: Colors.redAccent),
-                                  onPressed: () {},
+                                  subtitle: Text(
+                                    "Order Now",
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                      fontFamily: "poppins",
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w200,
+                                    ),
+                                  ),
+                                  trailing: IconButton(
+                                    icon: Icon(Icons.delete,
+                                        color: Colors.redAccent),
+                                    onPressed: () {},
+                                  ),
                                 ),
                               ),
                             ),

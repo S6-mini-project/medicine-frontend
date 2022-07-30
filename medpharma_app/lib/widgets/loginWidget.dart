@@ -19,7 +19,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 24, 31, 46),
+      backgroundColor: Colors.white,
       body: ListView(
         padding: EdgeInsets.all(50),
         children: [
@@ -45,11 +45,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                 decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
                     borderSide:
-                        BorderSide(color: Color.fromARGB(255, 37, 45, 63)),
+                        BorderSide(color:  Color.fromARGB(255, 142, 143, 145)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color.fromARGB(255, 37, 45, 63),
+                      color:  Color.fromARGB(255, 142, 143, 145),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(10),
@@ -57,7 +57,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   hintText: "Email",
                   errorText: ueCheck ? null : 'Email cannot be empty',
                   hintStyle: TextStyle(
-                    color: Color.fromARGB(255, 53, 66, 94),
+                    color:  Color.fromARGB(255, 142, 143, 145),
                     fontFamily: "Poppins",
                     fontSize: 18,
                   ),
@@ -72,9 +72,12 @@ class _LoginWidgetState extends State<LoginWidget> {
           SizedBox(
             // child: PassWidget(),
             child: TextField(
-              style: TextStyle(color: Colors.teal[700],fontFamily: "poppins"),
+              style: TextStyle(color: Colors.teal[700], fontFamily: "poppins"),
               controller: passController,
-              keyboardType: TextInputType.multiline,
+              keyboardType: TextInputType.visiblePassword,
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
               onChanged: (String value) {
                 print(value);
               },
@@ -84,10 +87,10 @@ class _LoginWidgetState extends State<LoginWidget> {
               decoration: InputDecoration(
                 enabledBorder: UnderlineInputBorder(
                     borderSide:
-                        BorderSide(color: Color.fromARGB(255, 37, 45, 63))),
+                        BorderSide(color: Color.fromARGB(255, 142, 143, 145))),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: Color.fromARGB(255, 37, 45, 63),
+                    color: Color.fromARGB(255, 142, 143, 145),
                     width: 2,
                   ),
                   borderRadius: BorderRadius.circular(10),
@@ -96,7 +99,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 errorText: passCheck ? null : 'Password cannot be empty',
                 hintStyle: TextStyle(
                   fontFamily: "Poppins",
-                  color: Color.fromARGB(255, 53, 66, 94),
+                  color:  Color.fromARGB(255, 142, 143, 145),
                   fontSize: 18,
                 ),
               ),
@@ -107,38 +110,42 @@ class _LoginWidgetState extends State<LoginWidget> {
           ),
           SizedBox(
               height: MediaQuery.of(context).size.height * .1,
-              child: Row(
-                children: [
-                  Text(
-                    "Sign in",
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 53, 66, 94),
-                      fontFamily: "Poppins",
-                      fontSize: 40,
-                      fontWeight: FontWeight.w600,
+              child: Flexible(
+                flex: 1,
+                fit: FlexFit.loose,
+                child: Row(
+                  children: [
+                    Text(
+                      "Sign in",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 53, 66, 94),
+                        fontFamily: "Poppins",
+                        fontSize: 40,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * .21,
-                  ),
-                  FlatButton(
-                    onPressed: () {
-                      print("hii");
-                      _validateLogin();
-                    },
-                    onLongPress: () {
-                      print("long press");
-                    },
-                    child: Icon(Icons.keyboard_arrow_right_rounded),
-                    textColor: Colors.blueGrey,
-                    color: Color.fromARGB(255, 53, 66, 94),
-                    splashColor: Color.fromARGB(208, 0, 0, 0),
-                    highlightColor: Colors.black38,
-                    disabledTextColor: Colors.blueGrey,
-                    shape: CircleBorder(),
-                    padding: EdgeInsets.all(15),
-                  ),
-                ],
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * .20,
+                    ),
+                    FlatButton(
+                      onPressed: () {
+                        print("hii");
+                        _validateLogin();
+                      },
+                      onLongPress: () {
+                        print("long press");
+                      },
+                      child: Icon(Icons.keyboard_arrow_right_rounded),
+                      textColor: Colors.white,
+                      color: Color.fromARGB(255, 53, 66, 94),
+                      splashColor: Color.fromARGB(208, 0, 0, 0),
+                      highlightColor: Colors.black38,
+                      disabledTextColor: Colors.white,
+                      shape: CircleBorder(),
+                      padding: EdgeInsets.all(15),
+                    ),
+                  ],
+                ),
               )),
           SizedBox(height: MediaQuery.of(context).size.height * .03),
           SizedBox(
@@ -154,7 +161,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               ),
               FlatButton(
                 onPressed: () {
-                  print("sign up pressed");
+                  Navigator.pushNamed(context, '/signup');
                 },
                 color: Color.fromARGB(255, 37, 45, 63),
                 splashColor: Color.fromARGB(208, 0, 0, 0),
@@ -165,7 +172,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   "Sign up",
                   style: TextStyle(
                     fontFamily: "poppins",
-                    color: Color.fromARGB(255, 56, 69, 97),
+                    color: Colors.white,
                     fontWeight: FontWeight.w600,
                     decoration: TextDecoration.underline,
                   ),

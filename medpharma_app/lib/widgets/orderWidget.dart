@@ -12,6 +12,7 @@ class OrderWidgetState extends State {
   Medweight weight = Medweight();
   bool viewVisible = true;
   double? wt;
+   double? mwt;
   void showWidget() {
     setState(() {
       viewVisible = true;
@@ -87,8 +88,9 @@ class OrderWidgetState extends State {
                       itemCount: snapshot.data?.length,
                       itemBuilder: (context, i) {
                         wt = double.parse(snapshot.data![i]['medicine_weight']);
+                         mwt = double.parse(snapshot.data![i]['minimum_stock']);
                         String med_name = snapshot.data![i]['medicine_name'].toString();
-                        if (wt! <= 30) {
+                        if (wt! <= mwt!) {
                           return SizedBox(
                             child: Visibility(
                               maintainSize: true,
@@ -104,7 +106,7 @@ class OrderWidgetState extends State {
                             style: TextStyle(
                               color: Colors.blueGrey,
                               fontFamily: "poppins",
-                              fontSize: 32,
+                              fontSize: 24,
                               fontWeight: FontWeight.w600,
                             ),
                           );

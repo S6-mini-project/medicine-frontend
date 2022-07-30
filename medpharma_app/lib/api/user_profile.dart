@@ -38,9 +38,11 @@ void copy({
   email_id = iemail ?? email_id;
 }
 
+
 Future<Profile> _getProfile() async {
   // print(access_token);
   final response = await http.get(
+    //  Uri.parse('http://192.168.38.252:5000/api/profile'),
     Uri.parse('http://192.168.18.178:5000/api/profile'), //TODO
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
