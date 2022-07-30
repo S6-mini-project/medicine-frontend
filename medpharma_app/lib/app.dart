@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import './services/notification.dart';
 import './api/login.dart';
 import './widgets/signupWidget.dart';
+import './widgets/allMedScreen.dart';
 
 class App extends StatelessWidget {
   @override
@@ -26,7 +27,8 @@ class App extends StatelessWidget {
             '/users': (context) => ProfileScreen(),
             '/notifications': (context) => NotificationScreen(),
             '/orders': (context) => OrderScreen(),
-            '/signup':(context) => SignupWidget() //routes
+            '/signup':(context) => SignupWidget(),
+            '/allmeds':(context) => AllMedScreen(), //routes
             //   // When navigating to the "/second" route, build the SecondScreen widget.
             //   '/orders': (context) => OrderScreen(),  //routes
           },
@@ -48,13 +50,14 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
+    AllMedScreen(),
     OrderScreen(),
     NotificationScreen(),
     ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
+    setState(() { 
       _selectedIndex = index;
     });
   }
@@ -207,6 +210,33 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right_rounded),
               ),
+                ListTile(
+                title: Text(
+                  "Stocks",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontFamily: "poppins",
+                  ),
+                ),
+                subtitle: Text(
+                  "display medicine stocks",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontFamily: "poppins",
+                  ),
+                ),
+                onTap: () {
+                  print("stocks pressed");
+                Navigator.pushNamed(context, '/allmeds');
+                },
+                hoverColor: Colors.black38,
+                leading: Icon(
+                  Icons.bar_chart_rounded,
+                  size: 40,
+                  color: Colors.blueGrey,
+                ),
+                trailing: Icon(Icons.keyboard_arrow_right_rounded),
+              ),
               ListTile(
                 title: Text(
                   "Logout",
@@ -252,6 +282,12 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
+              Icons.stacked_bar_chart,
+            ),
+            label: "Stocks",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
               Icons.shopping_bag,
             ),
             label: "Orders",
@@ -277,6 +313,8 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
         iconSize: 30,
         onTap: _onItemTapped,
         elevation: 1,
+        selectedLabelStyle: TextStyle(fontFamily: "poppins",fontSize: 13),
+        unselectedLabelStyle: TextStyle(fontFamily: "poppins"),
       ),
     );
   }

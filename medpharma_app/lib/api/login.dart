@@ -104,7 +104,7 @@ Future<bool> logout() async {
 
 Future<bool> _signupAuthUser(String name,String id, String pass,String cpass) async {
   final response = await http.post(
-        // Uri.parse('http://192.168.38.252:5000/api/login'), 
+        // Uri.parse('http://192.168.38.252:5000/api/register'), 
     Uri.parse('http://192.168.18.178:5000/api/register'), // TODO
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',

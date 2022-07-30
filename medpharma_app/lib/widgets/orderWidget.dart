@@ -78,50 +78,53 @@ class OrderWidgetState extends State {
           SizedBox(
             height: 20,
           ),
-          FutureBuilder<List>(
-              future: weight.getMedWeight(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: snapshot.data?.length,
-                      itemBuilder: (context, i) {
-                        wt = double.parse(snapshot.data![i]['medicine_weight']);
-                         mwt = double.parse(snapshot.data![i]['minimum_stock']);
-                        String med_name = snapshot.data![i]['medicine_name'].toString();
-                        if (wt! <= mwt!) {
-                          return SizedBox(
-                            child: Visibility(
-                              maintainSize: true,
-                              maintainAnimation: true,
-                              maintainState: true,
-                              visible: viewVisible,
-                              child: OrderCardWidget(medicineName: med_name),
-                            ),
-                          );
-                        } else {
-                          return Text(
-                            "No Orders for now come back later",
-                            style: TextStyle(
+          SingleChildScrollView(
+            child: FutureBuilder<List>(
+                future: weight.getMedWeight(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                        // scrollDirection: Axis.vertical,
+                      physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: snapshot.data?.length,
+                        itemBuilder: (context, i) {
+                          wt = double.parse(snapshot.data![i]['medicine_weight']);
+                           mwt = double.parse(snapshot.data![i]['minimum_stock']);
+                          String med_name = snapshot.data![i]['medicine_name'].toString();
+                          if (wt! <= mwt!) {
+                            return SizedBox(
+                              child: Visibility(
+                                maintainSize: true,
+                                maintainAnimation: true,
+                                maintainState: true,
+                                visible: viewVisible,
+                                child: OrderCardWidget(medicineName: med_name),
+                              ),
+                            );
+                          } else {
+                            return Text(
+                              "No Orders for now come back later",
+                              style: TextStyle(
+                                color: Colors.blueGrey,
+                                fontFamily: "poppins",
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            );
+                          }
+                        });
+                  } else {
+                    return const Center(
+                      child: Text("No data available",
+                          style: TextStyle(
                               color: Colors.blueGrey,
                               fontFamily: "poppins",
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          );
-                        }
-                      });
-                } else {
-                  return const Center(
-                    child: Text("No data available",
-                        style: TextStyle(
-                            color: Colors.blueGrey,
-                            fontFamily: "poppins",
-                            fontSize: 15)),
-                  );
-                }
-              }),
+                              fontSize: 15)),
+                    );
+                  }
+                }),
+          ),
         ],
       ),
     );
