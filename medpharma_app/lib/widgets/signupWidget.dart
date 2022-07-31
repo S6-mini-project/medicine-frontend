@@ -51,6 +51,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                             controller: unameController,
                             style: TextStyle(color: Colors.white,fontFamily: "poppins",),
                             decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.person),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(
@@ -79,6 +80,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                controller : emailController,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.email),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(
@@ -107,6 +109,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                             style: TextStyle(color: Colors.white),
                             obscureText: true,
                             decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.password_rounded),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(
@@ -135,6 +138,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                             style: TextStyle(color: Colors.white),
                             obscureText: true,
                             decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.password_rounded),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(

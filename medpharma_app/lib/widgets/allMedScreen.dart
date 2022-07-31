@@ -158,7 +158,7 @@ class _AllMedScreenState extends State<AllMedScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Enter name of min stock ",
+                                          "Enter the minimum stock ",
                                           style: TextStyle(
                                               fontSize: 14,
                                               fontFamily: "poppins",

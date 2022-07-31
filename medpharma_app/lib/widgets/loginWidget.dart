@@ -43,21 +43,26 @@ class _LoginWidgetState extends State<LoginWidget> {
                   print("tapped");
                 },
                 decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.email,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
                   enabledBorder: UnderlineInputBorder(
                     borderSide:
-                        BorderSide(color:  Color.fromARGB(255, 142, 143, 145)),
+                        BorderSide(color: Color.fromARGB(255, 142, 143, 145)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color:  Color.fromARGB(255, 142, 143, 145),
-                      width: 2,
+                      color: Color.fromARGB(255, 179, 179, 181),
+                      width: 1,
                     ),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   hintText: "Email",
                   errorText: ueCheck ? null : 'Email cannot be empty',
                   hintStyle: TextStyle(
-                    color:  Color.fromARGB(255, 142, 143, 145),
+                    color: Color.fromARGB(255, 142, 143, 145),
                     fontFamily: "Poppins",
                     fontSize: 18,
                   ),
@@ -85,13 +90,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                 print("tapped");
               },
               decoration: InputDecoration(
+                prefixIcon: Icon(Icons.password),
+                filled: true,
+                fillColor: Colors.white,
                 enabledBorder: UnderlineInputBorder(
                     borderSide:
                         BorderSide(color: Color.fromARGB(255, 142, 143, 145))),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: Color.fromARGB(255, 142, 143, 145),
-                    width: 2,
+                    color: Color.fromARGB(255, 179, 179, 181),
+                    width: 1,
                   ),
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -99,7 +107,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 errorText: passCheck ? null : 'Password cannot be empty',
                 hintStyle: TextStyle(
                   fontFamily: "Poppins",
-                  color:  Color.fromARGB(255, 142, 143, 145),
+                  color: Color.fromARGB(255, 142, 143, 145),
                   fontSize: 18,
                 ),
               ),

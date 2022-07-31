@@ -85,43 +85,51 @@ class _TotalStockState extends State {
                     shrinkWrap: true,
                     itemCount: snapshot.data?.length,
                     itemBuilder: (context, i) {
-                      return Card(
-                        child: Ink(
-                          color: Color.fromARGB(255, 4, 17, 38),
-                          child: ListTile(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  width: 1, color: Color.fromARGB(255, 6, 22, 85)),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            title: Text(
-                              snapshot.data![i]['medicine_name'].toString(),
-                              style: TextStyle(
-                                fontSize: 20.0,
-                                color: Colors.blueAccent,
-                                fontFamily: "poppins",
-                                  fontWeight: FontWeight.bold,
+                      return Visibility(
+                        maintainSize: true,
+                        maintainAnimation: true,
+                        maintainState: true,
+                        visible: viewVisible,
+                        child: Card(
+                          child: Ink(
+                            color: Color.fromARGB(255, 4, 17, 38),
+                            child: ListTile(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    width: 1,
+                                    color: Color.fromARGB(255, 6, 22, 85)),
+                                borderRadius: BorderRadius.circular(15),
                               ),
-                            ),
-                            onTap: () {},
-                            subtitle: Text(
-                              "minimum stock: " +
-                                  snapshot.data![i]['minimum_stock'].toString(),
-                              style: TextStyle(
-                                fontSize: 15.0,
-                                color: Colors.green,
-                                fontFamily: "poppins",
-                              
-                              ),
-                            ),
-                            leading: CircleAvatar(
-                              backgroundColor: Color.fromARGB(255, 7, 42, 126),
-                              child: Text(
-                                i.toString(),
+                              title: Text(
+                                snapshot.data![i]['medicine_name'].toString(),
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: "poppins",
-                                    fontSize: 20),
+                                  fontSize: 20.0,
+                                  color: Colors.blueAccent,
+                                  fontFamily: "poppins",
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              onTap: () {},
+                              subtitle: Text(
+                                "minimum stock: " +
+                                    snapshot.data![i]['minimum_stock']
+                                        .toString(),
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.green,
+                                  fontFamily: "poppins",
+                                ),
+                              ),
+                              leading: CircleAvatar(
+                                backgroundColor:
+                                    Color.fromARGB(255, 7, 42, 126),
+                                child: Text(
+                                  i.toString(),
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: "poppins",
+                                      fontSize: 20),
+                                ),
                               ),
                             ),
                           ),
@@ -136,7 +144,6 @@ class _TotalStockState extends State {
             },
           ),
         ),
-        
       ]),
     );
   }

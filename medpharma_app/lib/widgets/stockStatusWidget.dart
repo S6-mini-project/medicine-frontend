@@ -54,8 +54,9 @@ class _StockStatusWidgetState extends State<StockStatusWidget> {
                       percent = (wt! / mwt!) * 100;
                       percent =
                           num.parse(percent!.toStringAsFixed(2)) as double?;
-                      per = 1 -(percent! / 100);
-                      rem = 100 - percent!;
+                      per = 1 - (percent! / 100);
+                      rem = num.parse(per!.toStringAsFixed(2)) * 100 as double?;
+
                       return Flexible(
                         flex: 1,
                         fit: FlexFit.tight,
@@ -100,7 +101,9 @@ class _StockStatusWidgetState extends State<StockStatusWidget> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 10,),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
                                     new LinearPercentIndicator(
                                       width: MediaQuery.of(context).size.width *
                                           .5,
@@ -116,8 +119,8 @@ class _StockStatusWidgetState extends State<StockStatusWidget> {
                                         ),
                                       ),
                                       barRadius: const Radius.circular(16),
-                                      progressColor:
-                                          Color.fromARGB(255, 54, 207, 77),
+                                      progressColor:  rem! >= 90 ? Color.fromARGB(255, 54, 207, 77): rem! >= 50?  Colors.yellow : Colors.red,
+                                      // Color(0xEF0012),
                                     ),
                                   ],
                                 ),
@@ -129,7 +132,7 @@ class _StockStatusWidgetState extends State<StockStatusWidget> {
                                   child: CircularPercentIndicator(
                                     animationDuration: 1500,
                                     progressColor:
-                                        Color.fromARGB(255, 54, 207, 77),
+                                       rem! >= 90 ? Color.fromARGB(255, 54, 207, 77): rem! >= 50?  Colors.yellow : Colors.red,
                                     radius: 60.0,
                                     lineWidth: 13.0,
                                     animation: true,
